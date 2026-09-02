@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,12 +7,14 @@
 
   <title>Salon Information</title>
 
-  <meta
-    name="description"
-    content="Submit your salon information and our team will get in touch with you."
-  >
+<meta
+name="description"
+content="Submit your salon information and our team will get in touch with you."
+
+>
 
   <!-- Supabase -->
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
@@ -164,8 +167,7 @@
     }
 
     input,
-    textarea,
-    select {
+    textarea {
       width: 100%;
 
       border: 1px solid #e5e5e5;
@@ -186,8 +188,7 @@
     }
 
     input:focus,
-    textarea:focus,
-    select:focus {
+    textarea:focus {
       background: white;
 
       border-color: #999;
@@ -324,242 +325,212 @@
       }
     }
   </style>
-</head>
 
+</head>
 
 <body>
 
   <div class="container">
 
-    <div class="card">
+```
+<div class="card">
 
-      <div class="logo">
-        ✦
-      </div>
+  <div class="logo">
+    ✦
+  </div>
 
-      <h1>Salon Information</h1>
+  <h1>Salon Information</h1>
 
-      <p class="subtitle">
-        Please provide your salon information below.
-        Our team will review your details and get
-        in touch with you shortly.
-      </p>
+  <p class="subtitle">
+    Please provide your salon information below.
+    Our team will review your details and get
+    in touch with you shortly.
+  </p>
 
+  <form id="customerForm">
 
-      <form id="customerForm">
+    <!-- Salon Information -->
 
+    <div class="section-title">
+      Salon Information
+    </div>
 
-        <!-- ======================
-             Salon Information
-        ======================= -->
+    <div class="form-group">
 
-        <div class="section-title">
-          Salon Information
-        </div>
+      <label for="salonName">
+        Beauty Salon Name
+        <span class="required">*</span>
+      </label>
 
-
-        <!-- Salon Name -->
-        <div class="form-group">
-
-          <label>
-            Beauty Salon Name
-            <span class="required">*</span>
-          </label>
-
-          <input
-            type="text"
-            id="salonName"
-            placeholder="Enter salon name"
-            required
-          >
-
-        </div>
-
-
-        <!-- Store Size -->
-        <div class="form-group">
-
-          <label>
-            Store Size
-          </label>
-
-          <input
-            type="text"
-            id="storeSize"
-            placeholder="e.g. 100 sqm"
-          >
-
-        </div>
-
-
-        <!-- Location -->
-        <div class="form-group">
-
-          <label>
-            Location
-            <span class="required">*</span>
-          </label>
-
-          <input
-            type="text"
-            id="location"
-            placeholder="City / District / Country"
-            required
-          >
-
-        </div>
-
-
-        <!-- ======================
-             Contact Information
-        ======================= -->
-
-        <div class="section-title">
-          Contact Information
-        </div>
-
-
-        <!-- Contact Person -->
-        <div class="form-group">
-
-          <label>
-            Contact Person
-            <span class="required">*</span>
-          </label>
-
-          <input
-            type="text"
-            id="contactPerson"
-            placeholder="Enter contact person's name"
-            required
-          >
-
-        </div>
-
-
-        <!-- Phone -->
-        <div class="form-group">
-
-          <label>
-            Phone Number
-            <span class="required">*</span>
-          </label>
-
-          <input
-            type="tel"
-            id="phone"
-            placeholder="Enter phone number"
-            required
-          >
-
-        </div>
-
-
-        <!-- WhatsApp -->
-        <div class="form-group">
-
-          <label>
-            WhatsApp
-          </label>
-
-          <input
-            type="tel"
-            id="whatsapp"
-            placeholder="Enter WhatsApp number"
-          >
-
-        </div>
-
-
-        <!-- Email -->
-        <div class="form-group">
-
-          <label>
-            Email
-          </label>
-
-          <input
-            type="email"
-            id="email"
-            placeholder="name@example.com"
-          >
-
-        </div>
-
-
-        <!-- ======================
-             Additional Information
-        ======================= -->
-
-        <div class="section-title">
-          Additional Information
-        </div>
-
-
-        <!-- Message -->
-        <div class="form-group">
-
-          <label>
-            Additional Message
-          </label>
-
-          <textarea
-            id="messageText"
-            placeholder="Tell us more about your salon or requirements..."
-          ></textarea>
-
-        </div>
-
-
-        <!-- Consent -->
-        <label class="consent">
-
-          <input
-            type="checkbox"
-            id="consent"
-            required
-          >
-
-          <span>
-            I agree to submit the above information
-            and allow you to contact me regarding
-            my inquiry.
-          </span>
-
-        </label>
-
-
-        <!-- Submit -->
-        <button
-          type="submit"
-          id="submitButton"
-        >
-          Submit Information
-        </button>
-
-
-        <div id="message"></div>
-
-      </form>
+      <input
+        type="text"
+        id="salonName"
+        placeholder="Enter salon name"
+        required
+      >
 
     </div>
 
+    <div class="form-group">
 
-    <div class="footer">
-      © 2026 Your Company. All rights reserved.
+      <label for="storeSize">
+        Store Size
+      </label>
+
+      <input
+        type="text"
+        id="storeSize"
+        placeholder="e.g. 100 sqm"
+      >
+
     </div>
+
+    <div class="form-group">
+
+      <label for="location">
+        Location
+        <span class="required">*</span>
+      </label>
+
+      <input
+        type="text"
+        id="location"
+        placeholder="City / District / Country"
+        required
+      >
+
+    </div>
+
+    <!-- Contact Information -->
+
+    <div class="section-title">
+      Contact Information
+    </div>
+
+    <div class="form-group">
+
+      <label for="contactPerson">
+        Contact Person
+        <span class="required">*</span>
+      </label>
+
+      <input
+        type="text"
+        id="contactPerson"
+        placeholder="Enter contact person's name"
+        required
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="phone">
+        Phone Number
+        <span class="required">*</span>
+      </label>
+
+      <input
+        type="tel"
+        id="phone"
+        placeholder="Enter phone number"
+        required
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="whatsapp">
+        WhatsApp
+      </label>
+
+      <input
+        type="tel"
+        id="whatsapp"
+        placeholder="Enter WhatsApp number"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="email">
+        Email
+      </label>
+
+      <input
+        type="email"
+        id="email"
+        placeholder="name@example.com"
+      >
+
+    </div>
+
+    <!-- Additional Information -->
+
+    <div class="section-title">
+      Additional Information
+    </div>
+
+    <div class="form-group">
+
+      <label for="messageText">
+        Additional Message
+      </label>
+
+      <textarea
+        id="messageText"
+        placeholder="Tell us more about your salon or requirements..."
+      ></textarea>
+
+    </div>
+
+    <!-- Consent -->
+
+    <label class="consent">
+
+      <input
+        type="checkbox"
+        id="consent"
+        required
+      >
+
+      <span>
+        I agree to submit the above information
+        and allow you to contact me regarding
+        my inquiry.
+      </span>
+
+    </label>
+
+    <!-- Submit -->
+
+    <button
+      type="submit"
+      id="submitButton"
+    >
+      Submit Information
+    </button>
+
+    <div id="message"></div>
+
+  </form>
+
+</div>
+
+<div class="footer">
+  © 2026 Your Company. All rights reserved.
+</div>
+```
 
   </div>
 
-
-
 <script>
 
-  /*
-   * =====================================
-   * SUPABASE CONFIGURATION
-   * =====================================
-   */
+  /* ==========================================
+     SUPABASE CONFIGURATION
+     ========================================== */
 
   const SUPABASE_URL =
     "https://ptqukagqumokeytpnrdk.supabase.co";
@@ -575,11 +546,9 @@
     );
 
 
-  /*
-   * =====================================
-   * FORM ELEMENTS
-   * =====================================
-   */
+  /* ==========================================
+     FORM ELEMENTS
+     ========================================== */
 
   const form =
     document.getElementById("customerForm");
@@ -591,11 +560,9 @@
     document.getElementById("message");
 
 
-  /*
-   * =====================================
-   * SUBMIT FORM
-   * =====================================
-   */
+  /* ==========================================
+     SUBMIT FORM
+     ========================================== */
 
   form.addEventListener(
     "submit",
@@ -603,10 +570,6 @@
 
       event.preventDefault();
 
-
-      /*
-       * Get values
-       */
 
       const salonName =
         document
@@ -664,91 +627,109 @@
           .trim();
 
 
-      /*
-       * Disable button
-       */
+      /* Disable button */
 
       button.disabled = true;
 
       button.innerText =
         "Submitting...";
 
+      message.className = "";
+
       message.innerText = "";
 
 
-      /*
-       * Send data to Supabase
-       */
+      try {
 
-      const { data, error } =
-        await supabaseClient
+        /* =====================================
+           INSERT INTO SUPABASE
+           ===================================== */
+
+        const {
+          data,
+          error
+        } = await supabaseClient
           .from("customers")
           .insert([
             {
-
-              salon_name:
-                salonName,
-
-              store_size:
-                storeSize,
-
-              location:
-                location,
-
-              contact_person:
-                contactPerson,
-
-              phone:
-                phone,
-
-              whatsapp:
-                whatsapp,
-
-              email:
-                email,
-
-              message:
-                messageText
-
+              salon_name: salonName,
+              store_size: storeSize,
+              location: location,
+              contact_person: contactPerson,
+              phone: phone,
+              whatsapp: whatsapp,
+              email: email,
+              message: messageText
             }
-          ]);
+          ])
+          .select();
 
 
-      /*
-       * Error
-       */
+        /* =====================================
+           SUPABASE ERROR
+           ===================================== */
 
-      if (error) {
+        if (error) {
 
-        console.error(error);
+          console.error(
+            "Supabase Error:",
+            error
+          );
+
+          message.className =
+            "error";
+
+          message.innerText =
+            "Submission failed: " +
+            error.message;
+
+          button.disabled = false;
+
+          button.innerText =
+            "Submit Information";
+
+          return;
+        }
+
+
+        /* =====================================
+           SUCCESS
+           ===================================== */
+
+        console.log(
+          "Submission successful:",
+          data
+        );
+
+        message.className =
+          "success";
+
+        message.innerText =
+          "✓ Thank you! Your information has been submitted successfully.";
+
+
+        form.reset();
+
+
+      } catch (error) {
+
+        /* =====================================
+           JAVASCRIPT / NETWORK ERROR
+           ===================================== */
+
+        console.error(
+          "Unexpected Error:",
+          error
+        );
 
         message.className =
           "error";
 
         message.innerText =
-          "Something went wrong. Please try again.";
+          "Connection error: " +
+          error.message;
 
-        button.disabled = false;
-
-        button.innerText =
-          "Submit Information";
-
-        return;
       }
-
-
-      /*
-       * Success
-       */
-
-      message.className =
-        "success";
-
-      message.innerText =
-        "✓ Thank you! Your information has been submitted successfully.";
-
-
-      form.reset();
 
 
       button.disabled = false;
@@ -757,7 +738,6 @@
         "Submit Information";
 
     }
-
   );
 
 </script>
