@@ -304,7 +304,6 @@ content="Submit your salon information and our team will get in touch with you."
     }
 
     @media (max-width: 520px) {
-
       body {
         padding: 15px;
       }
@@ -332,6 +331,7 @@ content="Submit your salon information and our team will get in touch with you."
 
   <div class="container">
 
+```
 <div class="card">
 
   <div class="logo">
@@ -355,7 +355,6 @@ content="Submit your salon information and our team will get in touch with you."
     </div>
 
     <div class="form-group">
-
       <label for="salonName">
         Beauty Salon Name
         <span class="required">*</span>
@@ -367,11 +366,9 @@ content="Submit your salon information and our team will get in touch with you."
         placeholder="Enter salon name"
         required
       >
-
     </div>
 
     <div class="form-group">
-
       <label for="storeSize">
         Store Size
       </label>
@@ -381,11 +378,9 @@ content="Submit your salon information and our team will get in touch with you."
         id="storeSize"
         placeholder="e.g. 100 sqm"
       >
-
     </div>
 
     <div class="form-group">
-
       <label for="location">
         Location
         <span class="required">*</span>
@@ -397,8 +392,8 @@ content="Submit your salon information and our team will get in touch with you."
         placeholder="City / District / Country"
         required
       >
-
     </div>
+
 
     <!-- Contact Information -->
 
@@ -407,7 +402,6 @@ content="Submit your salon information and our team will get in touch with you."
     </div>
 
     <div class="form-group">
-
       <label for="contactPerson">
         Contact Person
         <span class="required">*</span>
@@ -419,11 +413,9 @@ content="Submit your salon information and our team will get in touch with you."
         placeholder="Enter contact person's name"
         required
       >
-
     </div>
 
     <div class="form-group">
-
       <label for="phone">
         Phone Number
         <span class="required">*</span>
@@ -435,11 +427,9 @@ content="Submit your salon information and our team will get in touch with you."
         placeholder="Enter phone number"
         required
       >
-
     </div>
 
     <div class="form-group">
-
       <label for="whatsapp">
         WhatsApp
       </label>
@@ -449,11 +439,9 @@ content="Submit your salon information and our team will get in touch with you."
         id="whatsapp"
         placeholder="Enter WhatsApp number"
       >
-
     </div>
 
     <div class="form-group">
-
       <label for="email">
         Email
       </label>
@@ -463,8 +451,8 @@ content="Submit your salon information and our team will get in touch with you."
         id="email"
         placeholder="name@example.com"
       >
-
     </div>
+
 
     <!-- Additional Information -->
 
@@ -473,7 +461,6 @@ content="Submit your salon information and our team will get in touch with you."
     </div>
 
     <div class="form-group">
-
       <label for="messageText">
         Additional Message
       </label>
@@ -482,8 +469,8 @@ content="Submit your salon information and our team will get in touch with you."
         id="messageText"
         placeholder="Tell us more about your salon or requirements..."
       ></textarea>
-
     </div>
+
 
     <!-- Consent -->
 
@@ -503,6 +490,7 @@ content="Submit your salon information and our team will get in touch with you."
 
     </label>
 
+
     <!-- Submit -->
 
     <button
@@ -521,156 +509,195 @@ content="Submit your salon information and our team will get in touch with you."
 <div class="footer">
   © 2026 Freedress Company. All rights reserved.
 </div>
+```
 
   </div>
 
-<script>
+  <script>
 
-  /* ==========================================
-     SUPABASE CONFIGURATION
-     ========================================== */
+    /* ==========================================
+       SUPABASE CONFIGURATION
+       ========================================== */
 
-  const SUPABASE_URL =
-    "https://ptqukagqumokeytpnrdk.supabase.co";
+    const SUPABASE_URL =
+      "https://ptqukagqumokeytpnrdk.supabase.co";
 
-  const SUPABASE_KEY =
-    "sb_publishable_AWtqzy_cWxpfvj2AnQWyOg_mVvF5yOV";
-
-
-  const supabaseClient =
-    supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
+    const SUPABASE_KEY =
+      "sb_publishable_AWtqzy_cWxpfvj2AnQWyOg_mVvF5yOV";
 
 
-  /* ==========================================
-     FORM ELEMENTS
-     ========================================== */
-
-  const form =
-    document.getElementById("customerForm");
-
-  const button =
-    document.getElementById("submitButton");
-
-  const message =
-    document.getElementById("message");
+    const supabaseClient =
+      supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
 
 
-  /* ==========================================
-     SUBMIT FORM
-     ========================================== */
+    /* ==========================================
+       FORM ELEMENTS
+       ========================================== */
 
-  form.addEventListener(
-    "submit",
-    async function(event) {
+    const form =
+      document.getElementById("customerForm");
 
-      event.preventDefault();
+    const button =
+      document.getElementById("submitButton");
 
-
-      const salonName =
-        document
-          .getElementById("salonName")
-          .value
-          .trim();
+    const message =
+      document.getElementById("message");
 
 
-      const storeSize =
-        document
-          .getElementById("storeSize")
-          .value
-          .trim();
+    /* ==========================================
+       SUBMIT FORM
+       ========================================== */
+
+    form.addEventListener(
+      "submit",
+      async function(event) {
+
+        event.preventDefault();
 
 
-      const location =
-        document
-          .getElementById("location")
-          .value
-          .trim();
+        /* Get form values */
+
+        const salonName =
+          document
+            .getElementById("salonName")
+            .value
+            .trim();
 
 
-      const contactPerson =
-        document
-          .getElementById("contactPerson")
-          .value
-          .trim();
+        const storeSize =
+          document
+            .getElementById("storeSize")
+            .value
+            .trim();
 
 
-      const phone =
-        document
-          .getElementById("phone")
-          .value
-          .trim();
+        const location =
+          document
+            .getElementById("location")
+            .value
+            .trim();
 
 
-      const whatsapp =
-        document
-          .getElementById("whatsapp")
-          .value
-          .trim();
+        const contactPerson =
+          document
+            .getElementById("contactPerson")
+            .value
+            .trim();
 
 
-      const email =
-        document
-          .getElementById("email")
-          .value
-          .trim();
+        const phone =
+          document
+            .getElementById("phone")
+            .value
+            .trim();
 
 
-      const messageText =
-        document
-          .getElementById("messageText")
-          .value
-          .trim();
+        const whatsapp =
+          document
+            .getElementById("whatsapp")
+            .value
+            .trim();
 
 
-      /* Disable button */
-
-      button.disabled = true;
-
-      button.innerText =
-        "Submitting...";
-
-      message.className = "";
-
-      message.innerText = "";
+        const email =
+          document
+            .getElementById("email")
+            .value
+            .trim();
 
 
-      try {
-
-        /* =====================================
-           INSERT INTO SUPABASE
-           ===================================== */
-
-        const {
-          data,
-          error
-        } = await supabaseClient
-          .from("customers")
-          .insert([
-            {
-              salon_name: salonName,
-              store_size: storeSize,
-              location: location,
-              contact_person: contactPerson,
-              phone: phone,
-              whatsapp: whatsapp,
-              email: email,
-              message: messageText
-            }
-          ])
-          .select();
+        const messageText =
+          document
+            .getElementById("messageText")
+            .value
+            .trim();
 
 
-        /* =====================================
-           SUPABASE ERROR
-           ===================================== */
+        /* Disable button */
 
-        if (error) {
+        button.disabled = true;
+
+        button.innerText =
+          "Submitting...";
+
+        message.className = "";
+
+        message.innerText = "";
+
+
+        try {
+
+          /* =====================================
+             INSERT DATA
+             ===================================== */
+
+          const { error } =
+            await supabaseClient
+              .from("customers")
+              .insert([
+                {
+                  salon_name: salonName,
+                  store_size: storeSize,
+                  location: location,
+                  contact_person: contactPerson,
+                  phone: phone,
+                  whatsapp: whatsapp,
+                  email: email,
+                  message: messageText
+                }
+              ]);
+
+
+          /* =====================================
+             HANDLE ERROR
+             ===================================== */
+
+          if (error) {
+
+            console.error(
+              "Supabase Error:",
+              error
+            );
+
+            message.className =
+              "error";
+
+            message.innerText =
+              "Submission failed: " +
+              error.message;
+
+            button.disabled = false;
+
+            button.innerText =
+              "Submit Information";
+
+            return;
+          }
+
+
+          /* =====================================
+             SUCCESS
+             ===================================== */
+
+          message.className =
+            "success";
+
+          message.innerText =
+            "✓ Thank you! Your information has been submitted successfully.";
+
+
+          /* Reset form */
+
+          form.reset();
+
+
+        } catch (error) {
 
           console.error(
-            "Supabase Error:",
+            "Unexpected Error:",
             error
           );
 
@@ -678,67 +705,23 @@ content="Submit your salon information and our team will get in touch with you."
             "error";
 
           message.innerText =
-            "Submission failed: " +
+            "Connection error: " +
             error.message;
 
-          button.disabled = false;
-
-          button.innerText =
-            "Submit Information";
-
-          return;
         }
 
 
-        /* =====================================
-           SUCCESS
-           ===================================== */
+        /* Enable button again */
 
-        console.log(
-          "Submission successful:",
-          data
-        );
+        button.disabled = false;
 
-        message.className =
-          "success";
-
-        message.innerText =
-          "✓ Thank you! Your information has been submitted successfully.";
-
-
-        form.reset();
-
-
-      } catch (error) {
-
-        /* =====================================
-           JAVASCRIPT / NETWORK ERROR
-           ===================================== */
-
-        console.error(
-          "Unexpected Error:",
-          error
-        );
-
-        message.className =
-          "error";
-
-        message.innerText =
-          "Connection error: " +
-          error.message;
+        button.innerText =
+          "Submit Information";
 
       }
+    );
 
-
-      button.disabled = false;
-
-      button.innerText =
-        "Submit Information";
-
-    }
-  );
-
-</script>
+  </script>
 
 </body>
 </html>
