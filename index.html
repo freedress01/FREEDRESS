@@ -1,11 +1,16 @@
+```html
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>联系我们</title>
-  <meta name="description" content="填写您的资料，我们会尽快与您联系">
+  <title>Salon Information</title>
+
+  <meta
+    name="description"
+    content="Submit your salon information and our team will get in touch with you."
+  >
 
   <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -22,18 +27,30 @@
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
-        "Noto Sans SC",
-        "Microsoft YaHei",
+        Arial,
         sans-serif;
 
       min-height: 100vh;
 
       background:
-        radial-gradient(circle at 10% 10%, rgba(255, 182, 193, 0.35), transparent 35%),
-        radial-gradient(circle at 90% 90%, rgba(180, 210, 255, 0.35), transparent 35%),
-        linear-gradient(135deg, #fff7f8, #f7f9ff);
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(255, 182, 193, 0.35),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 90% 90%,
+          rgba(180, 210, 255, 0.35),
+          transparent 35%
+        ),
+        linear-gradient(
+          135deg,
+          #fff7f8,
+          #f7f9ff
+        );
 
       color: #222;
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -43,11 +60,12 @@
 
     .container {
       width: 100%;
-      max-width: 500px;
+      max-width: 520px;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.90);
+
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
 
@@ -96,15 +114,34 @@
     h1 {
       font-size: 30px;
       line-height: 1.25;
+
       margin-bottom: 10px;
+
       letter-spacing: -0.5px;
     }
 
     .subtitle {
       color: #777;
+
       font-size: 15px;
+
       line-height: 1.7;
+
       margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-size: 13px;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      color: #999;
+
+      margin: 28px 0 16px;
     }
 
     .form-group {
@@ -113,9 +150,13 @@
 
     label {
       display: block;
+
       font-size: 14px;
+
       font-weight: 600;
+
       margin-bottom: 8px;
+
       color: #333;
     }
 
@@ -158,25 +199,32 @@
 
     textarea {
       resize: vertical;
-      min-height: 100px;
+
+      min-height: 110px;
     }
 
     .consent {
       display: flex;
+
       align-items: flex-start;
+
       gap: 10px;
 
       margin: 22px 0;
 
       color: #777;
+
       font-size: 13px;
+
       line-height: 1.6;
     }
 
     .consent input {
       width: 17px;
       height: 17px;
+
       margin-top: 2px;
+
       flex-shrink: 0;
     }
 
@@ -186,6 +234,7 @@
       border: none;
 
       background: #111;
+
       color: white;
 
       border-radius: 15px;
@@ -193,6 +242,7 @@
       padding: 16px;
 
       font-size: 16px;
+
       font-weight: 600;
 
       cursor: pointer;
@@ -202,6 +252,7 @@
 
     button:hover {
       background: #333;
+
       transform: translateY(-1px);
 
       box-shadow:
@@ -214,8 +265,11 @@
 
     button:disabled {
       opacity: 0.6;
+
       cursor: not-allowed;
+
       transform: none;
+
       box-shadow: none;
     }
 
@@ -257,6 +311,7 @@
 
       .card {
         padding: 28px 22px;
+
         border-radius: 24px;
       }
 
@@ -283,45 +338,135 @@
         ✦
       </div>
 
-      <h1>留下您的资料</h1>
+      <h1>Salon Information</h1>
 
       <p class="subtitle">
-        感谢您的关注。请填写以下资料，
-        我们会尽快与您联系。
+        Please provide your salon information below.
+        Our team will review your details and get
+        in touch with you shortly.
       </p>
 
 
       <form id="customerForm">
 
-        <!-- 姓名 -->
+
+        <!-- ======================
+             Salon Information
+        ======================= -->
+
+        <div class="section-title">
+          Salon Information
+        </div>
+
+
+        <!-- Salon Name -->
         <div class="form-group">
 
           <label>
-            姓名 <span class="required">*</span>
+            Beauty Salon Name
+            <span class="required">*</span>
           </label>
 
           <input
             type="text"
-            id="name"
-            placeholder="请输入您的姓名"
+            id="salonName"
+            placeholder="Enter salon name"
             required
           >
 
         </div>
 
 
-        <!-- 电话 -->
+        <!-- Store Size -->
         <div class="form-group">
 
           <label>
-            电话号码 <span class="required">*</span>
+            Store Size
+          </label>
+
+          <input
+            type="text"
+            id="storeSize"
+            placeholder="e.g. 100 sqm"
+          >
+
+        </div>
+
+
+        <!-- Location -->
+        <div class="form-group">
+
+          <label>
+            Location
+            <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="location"
+            placeholder="City / District / Country"
+            required
+          >
+
+        </div>
+
+
+        <!-- ======================
+             Contact Information
+        ======================= -->
+
+        <div class="section-title">
+          Contact Information
+        </div>
+
+
+        <!-- Contact Person -->
+        <div class="form-group">
+
+          <label>
+            Contact Person
+            <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="contactPerson"
+            placeholder="Enter contact person's name"
+            required
+          >
+
+        </div>
+
+
+        <!-- Phone -->
+        <div class="form-group">
+
+          <label>
+            Phone Number
+            <span class="required">*</span>
           </label>
 
           <input
             type="tel"
             id="phone"
-            placeholder="请输入电话号码"
+            placeholder="Enter phone number"
             required
+          >
+
+        </div>
+
+
+        <!-- WhatsApp -->
+        <div class="form-group">
+
+          <label>
+            WhatsApp
+          </label>
+
+          <input
+            type="tel"
+            id="whatsapp"
+            placeholder="Enter WhatsApp number"
           >
 
         </div>
@@ -343,72 +488,31 @@
         </div>
 
 
-        <!-- WhatsApp -->
-        <div class="form-group">
+        <!-- ======================
+             Additional Information
+        ======================= -->
 
-          <label>
-            WhatsApp
-          </label>
-
-          <input
-            type="tel"
-            id="whatsapp"
-            placeholder="请输入 WhatsApp"
-          >
-
+        <div class="section-title">
+          Additional Information
         </div>
 
 
-        <!-- 需求 -->
+        <!-- Message -->
         <div class="form-group">
 
           <label>
-            您感兴趣的服务
-          </label>
-
-          <select id="service">
-
-            <option value="">
-              请选择
-            </option>
-
-            <option value="咨询">
-              产品咨询
-            </option>
-
-            <option value="预约">
-              预约服务
-            </option>
-
-            <option value="合作">
-              商务合作
-            </option>
-
-            <option value="其他">
-              其他
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <!-- 留言 -->
-        <div class="form-group">
-
-          <label>
-            其他需求
+            Additional Message
           </label>
 
           <textarea
             id="messageText"
-            placeholder="请告诉我们您的需求……"
+            placeholder="Tell us more about your salon or requirements..."
           ></textarea>
 
         </div>
 
 
-        <!-- 同意 -->
+        <!-- Consent -->
         <label class="consent">
 
           <input
@@ -418,18 +522,20 @@
           >
 
           <span>
-            我同意提交以上资料，并允许我们根据我的需求与我联系。
+            I agree to submit the above information
+            and allow you to contact me regarding
+            my inquiry.
           </span>
 
         </label>
 
 
-        <!-- 提交 -->
+        <!-- Submit -->
         <button
           type="submit"
           id="submitButton"
         >
-          提交资料
+          Submit Information
         </button>
 
 
@@ -451,9 +557,9 @@
 <script>
 
   /*
-   * ==========================
-   * Supabase 配置
-   * ==========================
+   * =====================================
+   * SUPABASE CONFIGURATION
+   * =====================================
    */
 
   const SUPABASE_URL =
@@ -471,9 +577,9 @@
 
 
   /*
-   * ==========================
-   * 表单提交
-   * ==========================
+   * =====================================
+   * FORM ELEMENTS
+   * =====================================
    */
 
   const form =
@@ -486,6 +592,12 @@
     document.getElementById("message");
 
 
+  /*
+   * =====================================
+   * SUBMIT FORM
+   * =====================================
+   */
+
   form.addEventListener(
     "submit",
     async function(event) {
@@ -494,41 +606,79 @@
 
 
       /*
-       * 获取资料
+       * Get values
        */
 
-      const name =
-        document.getElementById("name").value.trim();
+      const salonName =
+        document
+          .getElementById("salonName")
+          .value
+          .trim();
+
+
+      const storeSize =
+        document
+          .getElementById("storeSize")
+          .value
+          .trim();
+
+
+      const location =
+        document
+          .getElementById("location")
+          .value
+          .trim();
+
+
+      const contactPerson =
+        document
+          .getElementById("contactPerson")
+          .value
+          .trim();
+
 
       const phone =
-        document.getElementById("phone").value.trim();
+        document
+          .getElementById("phone")
+          .value
+          .trim();
 
-      const email =
-        document.getElementById("email").value.trim();
 
       const whatsapp =
-        document.getElementById("whatsapp").value.trim();
+        document
+          .getElementById("whatsapp")
+          .value
+          .trim();
 
-      const service =
-        document.getElementById("service").value;
+
+      const email =
+        document
+          .getElementById("email")
+          .value
+          .trim();
+
 
       const messageText =
-        document.getElementById("messageText").value.trim();
+        document
+          .getElementById("messageText")
+          .value
+          .trim();
 
 
       /*
-       * 防止重复点击
+       * Disable button
        */
 
       button.disabled = true;
 
-      button.innerText = "正在提交…";
+      button.innerText =
+        "Submitting...";
 
       message.innerText = "";
 
 
       /*
-       * 写入 Supabase
+       * Send data to Supabase
        */
 
       const { data, error } =
@@ -536,59 +686,76 @@
           .from("customers")
           .insert([
             {
-              name: name,
-              phone: phone,
-              email: email,
-              whatsapp: whatsapp,
 
-              /*
-               * 如果你的数据库暂时没有
-               * service 和 message 字段，
-               * 先删除下面两行。
-               */
+              salon_name:
+                salonName,
 
-              service: service,
-              message: messageText
+              store_size:
+                storeSize,
+
+              location:
+                location,
+
+              contact_person:
+                contactPerson,
+
+              phone:
+                phone,
+
+              whatsapp:
+                whatsapp,
+
+              email:
+                email,
+
+              message:
+                messageText
+
             }
           ]);
 
 
       /*
-       * 错误处理
+       * Error
        */
 
       if (error) {
 
         console.error(error);
 
-        message.className = "error";
+        message.className =
+          "error";
 
         message.innerText =
-          "提交失败，请稍后再试。";
+          "Something went wrong. Please try again.";
 
         button.disabled = false;
 
-        button.innerText = "提交资料";
+        button.innerText =
+          "Submit Information";
 
         return;
       }
 
 
       /*
-       * 提交成功
+       * Success
        */
 
-      message.className = "success";
+      message.className =
+        "success";
 
       message.innerText =
-        "✓ 提交成功！我们会尽快与您联系。";
+        "✓ Thank you! Your information has been submitted successfully.";
 
 
       form.reset();
 
+
       button.disabled = false;
 
-      button.innerText = "提交资料";
+      button.innerText =
+        "Submit Information";
 
     }
 
@@ -598,3 +765,4 @@
 
 </body>
 </html>
+```
