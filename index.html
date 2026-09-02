@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,15 +6,10 @@
 
   <title>Salon Information</title>
 
-<meta
-name="description"
-content="Submit your salon information and our team will get in touch with you."
-
->
-
-  <!-- Supabase -->
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta
+    name="description"
+    content="Submit your salon information and our team will get in touch with you."
+  >
 
   <style>
     * {
@@ -303,6 +297,16 @@ content="Submit your salon information and our team will get in touch with you."
       font-size: 12px;
     }
 
+    /*
+      Hidden iframe:
+      Google Forms will receive the submission here
+      without leaving the current page.
+    */
+
+    #hidden_iframe {
+      display: none;
+    }
+
     @media (max-width: 520px) {
       body {
         padding: 15px;
@@ -331,206 +335,207 @@ content="Submit your salon information and our team will get in touch with you."
 
   <div class="container">
 
-```
-<div class="card">
+    <div class="card">
 
-  <div class="logo">
-    ✦
+      <div class="logo">
+        ✦
+      </div>
+
+      <h1>Salon Information</h1>
+
+      <p class="subtitle">
+        Please provide your salon information below.
+        Our team will review your details and get
+        in touch with you shortly.
+      </p>
+
+      <form id="customerForm">
+
+        <!-- Salon Information -->
+
+        <div class="section-title">
+          Salon Information
+        </div>
+
+        <div class="form-group">
+          <label for="salonName">
+            Beauty Salon Name
+            <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="salonName"
+            placeholder="Enter salon name"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="storeSize">
+            Store Size
+          </label>
+
+          <input
+            type="text"
+            id="storeSize"
+            placeholder="e.g. 100 sqm"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="location">
+            Location
+            <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="location"
+            placeholder="City / District / Country"
+            required
+          >
+        </div>
+
+
+        <!-- Contact Information -->
+
+        <div class="section-title">
+          Contact Information
+        </div>
+
+        <div class="form-group">
+          <label for="contactPerson">
+            Contact Person
+            <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="contactPerson"
+            placeholder="Enter contact person's name"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="phone">
+            Phone Number
+            <span class="required">*</span>
+          </label>
+
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Enter phone number"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="whatsapp">
+            WhatsApp
+          </label>
+
+          <input
+            type="tel"
+            id="whatsapp"
+            placeholder="Enter WhatsApp number"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email">
+            Email
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            placeholder="name@example.com"
+          >
+        </div>
+
+
+        <!-- Additional Information -->
+
+        <div class="section-title">
+          Additional Information
+        </div>
+
+        <div class="form-group">
+          <label for="messageText">
+            Additional Message
+          </label>
+
+          <textarea
+            id="messageText"
+            placeholder="Tell us more about your salon or requirements..."
+          ></textarea>
+        </div>
+
+
+        <!-- Consent -->
+
+        <label class="consent">
+
+          <input
+            type="checkbox"
+            id="consent"
+            required
+          >
+
+          <span>
+            I agree to submit the above information
+            and allow you to contact me regarding
+            my inquiry.
+          </span>
+
+        </label>
+
+
+        <!-- Submit -->
+
+        <button
+          type="submit"
+          id="submitButton"
+        >
+          Submit Information
+        </button>
+
+        <div id="message"></div>
+
+      </form>
+
+    </div>
+
+    <div class="footer">
+      © 2026 Freedress Company. All rights reserved.
+    </div>
+
   </div>
 
-  <h1>Salon Information</h1>
 
-  <p class="subtitle">
-    Please provide your salon information below.
-    Our team will review your details and get
-    in touch with you shortly.
-  </p>
+  <!--
+    Invisible iframe.
+    Google Forms submission happens inside this iframe.
+  -->
 
-  <form id="customerForm">
+  <iframe
+    name="hidden_iframe"
+    id="hidden_iframe"
+    style="display:none;"
+  ></iframe>
 
-    <!-- Salon Information -->
-
-    <div class="section-title">
-      Salon Information
-    </div>
-
-    <div class="form-group">
-      <label for="salonName">
-        Beauty Salon Name
-        <span class="required">*</span>
-      </label>
-
-      <input
-        type="text"
-        id="salonName"
-        placeholder="Enter salon name"
-        required
-      >
-    </div>
-
-    <div class="form-group">
-      <label for="storeSize">
-        Store Size
-      </label>
-
-      <input
-        type="text"
-        id="storeSize"
-        placeholder="e.g. 100 sqm"
-      >
-    </div>
-
-    <div class="form-group">
-      <label for="location">
-        Location
-        <span class="required">*</span>
-      </label>
-
-      <input
-        type="text"
-        id="location"
-        placeholder="City / District / Country"
-        required
-      >
-    </div>
-
-
-    <!-- Contact Information -->
-
-    <div class="section-title">
-      Contact Information
-    </div>
-
-    <div class="form-group">
-      <label for="contactPerson">
-        Contact Person
-        <span class="required">*</span>
-      </label>
-
-      <input
-        type="text"
-        id="contactPerson"
-        placeholder="Enter contact person's name"
-        required
-      >
-    </div>
-
-    <div class="form-group">
-      <label for="phone">
-        Phone Number
-        <span class="required">*</span>
-      </label>
-
-      <input
-        type="tel"
-        id="phone"
-        placeholder="Enter phone number"
-        required
-      >
-    </div>
-
-    <div class="form-group">
-      <label for="whatsapp">
-        WhatsApp
-      </label>
-
-      <input
-        type="tel"
-        id="whatsapp"
-        placeholder="Enter WhatsApp number"
-      >
-    </div>
-
-    <div class="form-group">
-      <label for="email">
-        Email
-      </label>
-
-      <input
-        type="email"
-        id="email"
-        placeholder="name@example.com"
-      >
-    </div>
-
-
-    <!-- Additional Information -->
-
-    <div class="section-title">
-      Additional Information
-    </div>
-
-    <div class="form-group">
-      <label for="messageText">
-        Additional Message
-      </label>
-
-      <textarea
-        id="messageText"
-        placeholder="Tell us more about your salon or requirements..."
-      ></textarea>
-    </div>
-
-
-    <!-- Consent -->
-
-    <label class="consent">
-
-      <input
-        type="checkbox"
-        id="consent"
-        required
-      >
-
-      <span>
-        I agree to submit the above information
-        and allow you to contact me regarding
-        my inquiry.
-      </span>
-
-    </label>
-
-
-    <!-- Submit -->
-
-    <button
-      type="submit"
-      id="submitButton"
-    >
-      Submit Information
-    </button>
-
-    <div id="message"></div>
-
-  </form>
-
-</div>
-
-<div class="footer">
-  © 2026 Freedress Company. All rights reserved.
-</div>
-```
-
-  </div>
 
   <script>
 
     /* ==========================================
-       SUPABASE CONFIGURATION
+       GOOGLE FORM CONFIGURATION
        ========================================== */
 
-    const SUPABASE_URL =
-      "https://ptqukagqumokeytpnrdk.supabase.co";
-
-    const SUPABASE_KEY =
-      "sb_publishable_AWtqzy_cWxpfvj2AnQWyOg_mVvF5yOV";
-
-
-    const supabaseClient =
-      supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-      );
+    const GOOGLE_FORM_URL =
+      "https://docs.google.com/forms/d/e/1FAIpQLScJg1mYA2TCy9VbuAE4PGURc57POKcTNHhrpN3ofSYhX6Zgmw/formResponse";
 
 
     /* ==========================================
@@ -553,12 +558,14 @@ content="Submit your salon information and our team will get in touch with you."
 
     form.addEventListener(
       "submit",
-      async function(event) {
+      function(event) {
 
         event.preventDefault();
 
 
-        /* Get form values */
+        /* ======================================
+           GET VALUES
+           ====================================== */
 
         const salonName =
           document
@@ -616,7 +623,9 @@ content="Submit your salon information and our team will get in touch with you."
             .trim();
 
 
-        /* Disable button */
+        /* ======================================
+           DISABLE BUTTON
+           ====================================== */
 
         button.disabled = true;
 
@@ -628,95 +637,128 @@ content="Submit your salon information and our team will get in touch with you."
         message.innerText = "";
 
 
-        try {
+        /* ======================================
+           CREATE GOOGLE FORM SUBMISSION
+           ====================================== */
 
-          /* =====================================
-             INSERT DATA
-             ===================================== */
+        const submitForm =
+          document.createElement("form");
 
-          const { error } =
-            await supabaseClient
-              .from("customers")
-              .insert([
-                {
-                  salon_name: salonName,
-                  store_size: storeSize,
-                  location: location,
-                  contact_person: contactPerson,
-                  phone: phone,
-                  whatsapp: whatsapp,
-                  email: email,
-                  message: messageText
-                }
-              ]);
+        submitForm.method = "POST";
+
+        submitForm.action =
+          GOOGLE_FORM_URL;
+
+        submitForm.target =
+          "hidden_iframe";
+
+        submitForm.style.display =
+          "none";
 
 
-          /* =====================================
-             HANDLE ERROR
-             ===================================== */
+        /* ======================================
+           GOOGLE FORM FIELD MAPPING
+           ====================================== */
 
-          if (error) {
+        const fields = {
 
-            console.error(
-              "Supabase Error:",
-              error
-            );
+          "entry.1713920276":
+            salonName,
+
+          "entry.951870254":
+            storeSize,
+
+          "entry.30164564":
+            location,
+
+          "entry.1454874061":
+            contactPerson,
+
+          "entry.1900115347":
+            phone,
+
+          "entry.1396736597":
+            whatsapp,
+
+          "entry.1037038169":
+            email,
+
+          "entry.1989603950":
+            messageText
+
+        };
+
+
+        /* ======================================
+           CREATE HIDDEN INPUTS
+           ====================================== */
+
+        Object.keys(fields).forEach(
+          function(name) {
+
+            const input =
+              document.createElement("input");
+
+            input.type =
+              "hidden";
+
+            input.name =
+              name;
+
+            input.value =
+              fields[name];
+
+            submitForm.appendChild(input);
+
+          }
+        );
+
+
+        /* ======================================
+           SUBMIT TO GOOGLE FORMS
+           ====================================== */
+
+        document.body.appendChild(
+          submitForm
+        );
+
+        submitForm.submit();
+
+
+        /* ======================================
+           SHOW SUCCESS MESSAGE
+           ====================================== */
+
+        setTimeout(
+          function() {
 
             message.className =
-              "error";
+              "success";
 
             message.innerText =
-              "Submission failed: " +
-              error.message;
+              "✓ Thank you! Your information has been submitted successfully.";
+
+
+            /* Reset visible form */
+
+            form.reset();
+
+
+            /* Remove temporary form */
+
+            submitForm.remove();
+
+
+            /* Enable button */
 
             button.disabled = false;
 
             button.innerText =
               "Submit Information";
 
-            return;
-          }
-
-
-          /* =====================================
-             SUCCESS
-             ===================================== */
-
-          message.className =
-            "success";
-
-          message.innerText =
-            "✓ Thank you! Your information has been submitted successfully.";
-
-
-          /* Reset form */
-
-          form.reset();
-
-
-        } catch (error) {
-
-          console.error(
-            "Unexpected Error:",
-            error
-          );
-
-          message.className =
-            "error";
-
-          message.innerText =
-            "Connection error: " +
-            error.message;
-
-        }
-
-
-        /* Enable button again */
-
-        button.disabled = false;
-
-        button.innerText =
-          "Submit Information";
+          },
+          1000
+        );
 
       }
     );
