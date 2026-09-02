@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>療癒護膚套裝</title>
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #fff7ed;
+  color: #333;
+}
+.container {
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+}
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px 0 0 0; /* 卡片顶部空隙20px，与图片分开 */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.price-old {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.price-new {
+  font-size: 32px;
+  font-weight: bold;
+  color: #e11d48;
+}
+.highlight {
+  color: #f59e0b;
+  font-weight: bold;
+}
+.button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  border: none;
+  background: #25D366;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+img {
+  width: 100%;
+  display: block;
+  border-radius: 0;
+  margin: 0; /* 保证图片紧贴无缝 */
+}
+
+/* 圓角效果 */
+.top-rounded {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.bottom-rounded {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-bottom: 20px; /* 最后一张图片与卡片空隙 */
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 頂部橫幅圖片 -->
+  <img src="banner.png" alt="頂部橫幅" class="top-rounded">
+  <img src="banner1.png" alt="頂部橫幅">
+  <img src="banner2.png" alt="頂部橫幅" class="bottom-rounded">
+
+  <div class="card">
+    <div class="title">✨ 套裝內容 · 三大療癒角色</div>
+    <p>🌼 洋甘菊舒敏水 $138 —— 安定者（5分鐘退紅、降溫、抗炎）</p>
+    <p>🛡️ 雙紫精華油 $428 —— 守護者（修復屏障、從根源穩定）</p>
+    <p>🍯 免費送 8片蜜糖面膜 —— 甜蜜陪伴者（價值$384）</p>
+    <div class="title">💎 60天 · 重建・鞏固・煥亮</div>
+    <p>肌膚細胞更新週期約28天，配合後續鞏固期，</p>
+    <p>完成完整「重建・鞏固・煥亮」週期。</p>
+    <p class="highlight">4月開始養膚，6月盛夏前養出健康透亮肌底！</p>
+  </div>
+
+  <div class="card">
+    <div class="title">🔥 限時優惠</div>
+    <p class="price-old">原價 $950</p>
+    <p class="price-new">$566</p>
+    <p class="highlight">買2送8 · 總價值$384 · 限量50套</p>
+    <div class="title">📝 立即領取優惠</div>
+    <a href="https://wa.me/85251675936" target="_blank">
+      <button class="button" id="whatsappBtn">📱 立即領取優惠(WhatsApp)</button>
+    </a>
+  </div>
+
+</div>
+
+<script>
+// 页面加载日志
+console.log("✅ 页面已加载完成");
+
+// 图片加载检测
+document.querySelectorAll("img").forEach((img, index) => {
+  img.addEventListener("load", () => {
+    console.log(`🖼️ 图片${index + 1}加载成功: ${img.src}`);
+  });
+  img.addEventListener("error", () => {
+    console.error(`❌ 图片${index + 1}加载失败: ${img.src}`);
+  });
+});
+
+// WhatsApp按钮点击日志
+const btn = document.getElementById("whatsappBtn");
+if (btn) {
+  btn.addEventListener("click", () => {
+    console.log("📲 用户点击了 WhatsApp 按钮");
+  });
+} else {
+  console.warn("⚠️ 找不到 WhatsApp 按钮");
+}
+</script>
+
+</body>
+</html>
