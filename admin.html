@@ -1,133 +1,1857 @@
+```html
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>療癒護膚套裝</title>
-<style>
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #fff7ed;
-  color: #333;
-}
-.container {
-  padding: 20px;
-  max-width: 500px;
-  margin: auto;
-}
-.card {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 20px;
-  margin: 20px 0 0 0; /* 卡片顶部空隙20px，与图片分开 */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-.title {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-.price-old {
-  text-decoration: line-through;
-  opacity: 0.6;
-}
-.price-new {
-  font-size: 32px;
-  font-weight: bold;
-  color: #e11d48;
-}
-.highlight {
-  color: #f59e0b;
-  font-weight: bold;
-}
-.button {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  border-radius: 14px;
-  border: none;
-  background: #25D366;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: 15px;
-}
-img {
-  width: 100%;
-  display: block;
-  border-radius: 0;
-  margin: 0; /* 保证图片紧贴无缝 */
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-/* 圓角效果 */
-.top-rounded {
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-.bottom-rounded {
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  margin-bottom: 20px; /* 最后一张图片与卡片空隙 */
-}
-</style>
+  <title>Customer Admin Dashboard</title>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+      min-height: 100vh;
+
+      background:
+        radial-gradient(circle at top left, rgba(255, 143, 177, 0.25), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(150, 120, 255, 0.18), transparent 35%),
+        #f6f7fb;
+
+      color: #222;
+    }
+
+    /* =========================
+       LOGIN
+    ========================= */
+
+    .login-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(18px);
+
+      border-radius: 24px;
+      padding: 40px;
+
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.08);
+
+      border: 1px solid rgba(255, 255, 255, 0.7);
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+
+      border-radius: 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-bottom: 20px;
+
+      font-size: 26px;
+
+      background: linear-gradient(
+        135deg,
+        #ff7fa8,
+        #a884ff
+      );
+
+      color: white;
+    }
+
+    .login-card h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .login-card p {
+      color: #777;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 15px;
+
+      border: 1px solid #ddd;
+      border-radius: 12px;
+
+      font-size: 15px;
+      outline: none;
+
+      background: white;
+
+      transition: 0.2s;
+    }
+
+    input:focus {
+      border-color: #ff7fa8;
+
+      box-shadow:
+        0 0 0 3px rgba(255, 127, 168, 0.12);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+
+      font-size: 15px;
+      font-weight: 600;
+
+      border-radius: 12px;
+
+      transition: 0.2s;
+    }
+
+    .login-button {
+      width: 100%;
+
+      padding: 14px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ff7fa8,
+          #a884ff
+        );
+    }
+
+    .login-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(168, 132, 255, 0.25);
+    }
+
+    .error-message {
+      margin-top: 15px;
+      padding: 12px;
+
+      border-radius: 10px;
+
+      background: #fff0f2;
+      color: #d9304f;
+
+      font-size: 14px;
+
+      display: none;
+    }
+
+
+    /* =========================
+       DASHBOARD
+    ========================= */
+
+    .dashboard {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(15px);
+
+      border-bottom: 1px solid #eee;
+
+      padding: 18px 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .brand h1 {
+      font-size: 22px;
+    }
+
+    .brand span {
+      color: #888;
+      font-size: 13px;
+    }
+
+    .logout-button {
+      padding: 10px 16px;
+
+      background: #f1f1f4;
+      color: #333;
+    }
+
+    .logout-button:hover {
+      background: #e5e5e9;
+    }
+
+    .container {
+      max-width: 1500px;
+
+      margin: auto;
+
+      padding: 30px;
+    }
+
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 18px;
+
+      margin-bottom: 25px;
+    }
+
+    .stat-card {
+      background: white;
+
+      padding: 22px;
+
+      border-radius: 18px;
+
+      box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.05);
+
+      border: 1px solid #eee;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+
+    /* =========================
+       TOOLBAR
+    ========================= */
+
+    .toolbar {
+      display: flex;
+
+      gap: 12px;
+
+      margin-bottom: 20px;
+
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      flex: 1;
+
+      min-width: 250px;
+
+      position: relative;
+    }
+
+    .search-box input {
+      padding-left: 42px;
+    }
+
+    .search-icon {
+      position: absolute;
+
+      left: 15px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: #999;
+    }
+
+    .refresh-button,
+    .export-button {
+      padding: 13px 18px;
+
+      background: white;
+
+      border: 1px solid #ddd;
+    }
+
+    .refresh-button:hover,
+    .export-button:hover {
+      background: #f7f7f7;
+    }
+
+
+    /* =========================
+       TABLE
+    ========================= */
+
+    .table-card {
+      background: white;
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.05);
+
+      border: 1px solid #eee;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+
+      border-collapse: collapse;
+
+      min-width: 1100px;
+    }
+
+    th {
+      text-align: left;
+
+      padding: 16px;
+
+      background: #fafafa;
+
+      border-bottom: 1px solid #eee;
+
+      font-size: 13px;
+
+      color: #777;
+
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 16px;
+
+      border-bottom: 1px solid #f0f0f0;
+
+      font-size: 14px;
+
+      vertical-align: middle;
+    }
+
+    tr:hover td {
+      background: #fcfcfd;
+    }
+
+    .salon-name {
+      font-weight: 650;
+    }
+
+    .muted {
+      color: #888;
+    }
+
+    .action-button {
+      padding: 8px 12px;
+
+      background: #f1f1f5;
+
+      color: #333;
+
+      margin-right: 6px;
+    }
+
+    .action-button:hover {
+      background: #e4e4e9;
+    }
+
+    .delete-button {
+      background: #fff0f2;
+
+      color: #d93652;
+    }
+
+    .delete-button:hover {
+      background: #ffe1e6;
+    }
+
+
+    /* =========================
+       EMPTY / LOADING
+    ========================= */
+
+    .loading,
+    .empty {
+      text-align: center;
+
+      padding: 50px;
+
+      color: #888;
+    }
+
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal {
+      display: none;
+
+      position: fixed;
+
+      inset: 0;
+
+      background: rgba(0, 0, 0, 0.45);
+
+      z-index: 100;
+
+      padding: 20px;
+
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-card {
+      width: 100%;
+
+      max-width: 650px;
+
+      max-height: 90vh;
+
+      overflow-y: auto;
+
+      background: white;
+
+      border-radius: 22px;
+
+      padding: 30px;
+
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-header {
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      margin-bottom: 25px;
+    }
+
+    .modal-header h2 {
+      font-size: 22px;
+    }
+
+    .close-button {
+      width: 38px;
+      height: 38px;
+
+      border-radius: 50%;
+
+      background: #f2f2f4;
+
+      font-size: 20px;
+    }
+
+    .detail-row {
+      padding: 14px 0;
+
+      border-bottom: 1px solid #eee;
+    }
+
+    .detail-label {
+      font-size: 12px;
+
+      color: #888;
+
+      margin-bottom: 5px;
+    }
+
+    .detail-value {
+      font-size: 15px;
+
+      word-break: break-word;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 800px) {
+
+      .topbar {
+        padding: 15px 18px;
+      }
+
+      .container {
+        padding: 18px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .brand h1 {
+        font-size: 18px;
+      }
+
+      .login-card {
+        padding: 28px;
+      }
+    }
+
+  </style>
 </head>
+
 <body>
-<div class="container">
 
-  <!-- 頂部橫幅圖片 -->
-  <img src="banner.png" alt="頂部橫幅" class="top-rounded">
-  <img src="banner1.png" alt="頂部橫幅">
-  <img src="banner2.png" alt="頂部橫幅" class="bottom-rounded">
 
-  <div class="card">
-    <div class="title">✨ 套裝內容 · 三大療癒角色</div>
-    <p>🌼 洋甘菊舒敏水 $138 —— 安定者（5分鐘退紅、降溫、抗炎）</p>
-    <p>🛡️ 雙紫精華油 $428 —— 守護者（修復屏障、從根源穩定）</p>
-    <p>🍯 免費送 8片蜜糖面膜 —— 甜蜜陪伴者（價值$384）</p>
-    <div class="title">💎 60天 · 重建・鞏固・煥亮</div>
-    <p>肌膚細胞更新週期約28天，配合後續鞏固期，</p>
-    <p>完成完整「重建・鞏固・煥亮」週期。</p>
-    <p class="highlight">4月開始養膚，6月盛夏前養出健康透亮肌底！</p>
-  </div>
+<!-- =========================
+     LOGIN PAGE
+========================= -->
 
-  <div class="card">
-    <div class="title">🔥 限時優惠</div>
-    <p class="price-old">原價 $950</p>
-    <p class="price-new">$566</p>
-    <p class="highlight">買2送8 · 總價值$384 · 限量50套</p>
-    <div class="title">📝 立即領取優惠</div>
-    <a href="https://wa.me/85251675936" target="_blank">
-      <button class="button" id="whatsappBtn">📱 立即領取優惠(WhatsApp)</button>
-    </a>
+<div class="login-wrapper" id="loginPage">
+
+  <div class="login-card">
+
+    <div class="logo">
+      ✦
+    </div>
+
+    <h1>Admin Login</h1>
+
+    <p>
+      Sign in to manage your beauty salon customer information.
+    </p>
+
+    <form id="loginForm">
+
+      <div class="form-group">
+
+        <label for="loginEmail">
+          Email
+        </label>
+
+        <input
+          type="email"
+          id="loginEmail"
+          placeholder="admin@example.com"
+          required
+        >
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="loginPassword">
+          Password
+        </label>
+
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Enter your password"
+          required
+        >
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="login-button"
+        id="loginButton"
+      >
+        Sign In
+      </button>
+
+      <div
+        class="error-message"
+        id="loginError"
+      ></div>
+
+    </form>
+
   </div>
 
 </div>
 
+
+
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<div class="dashboard" id="dashboard">
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <h1>
+        Customer Dashboard
+      </h1>
+
+      <span>
+        Beauty Salon Management
+      </span>
+
+    </div>
+
+    <button
+      class="logout-button"
+      id="logoutButton"
+    >
+      Logout
+    </button>
+
+  </header>
+
+
+  <main class="container">
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+      <div class="stat-card">
+
+        <div class="stat-label">
+          Total Customers
+        </div>
+
+        <div
+          class="stat-number"
+          id="totalCustomers"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-label">
+          Customers With WhatsApp
+        </div>
+
+        <div
+          class="stat-number"
+          id="whatsappCustomers"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-label">
+          Customers With Email
+        </div>
+
+        <div
+          class="stat-number"
+          id="emailCustomers"
+        >
+          0
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- TOOLBAR -->
+
+    <section class="toolbar">
+
+      <div class="search-box">
+
+        <span class="search-icon">
+          🔎
+        </span>
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search salon, contact person, phone, email or location..."
+        >
+
+      </div>
+
+
+      <button
+        class="refresh-button"
+        id="refreshButton"
+      >
+        ↻ Refresh
+      </button>
+
+
+      <button
+        class="export-button"
+        id="exportButton"
+      >
+        ↓ Export CSV
+      </button>
+
+    </section>
+
+
+
+    <!-- CUSTOMER TABLE -->
+
+    <section class="table-card">
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>Salon</th>
+
+              <th>Contact Person</th>
+
+              <th>Location</th>
+
+              <th>Store Size</th>
+
+              <th>Phone</th>
+
+              <th>WhatsApp</th>
+
+              <th>Email</th>
+
+              <th>Submitted</th>
+
+              <th>Actions</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="customerTable">
+
+            <tr>
+
+              <td
+                colspan="9"
+                class="loading"
+              >
+                Loading customers...
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+</div>
+
+
+
+<!-- =========================
+     CUSTOMER DETAIL MODAL
+========================= -->
+
+<div
+  class="modal"
+  id="customerModal"
+>
+
+  <div class="modal-card">
+
+    <div class="modal-header">
+
+      <h2>
+        Customer Details
+      </h2>
+
+      <button
+        class="close-button"
+        id="closeModal"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div id="customerDetails"></div>
+
+  </div>
+
+</div>
+
+
+
 <script>
-// 页面加载日志
-console.log("✅ 页面已加载完成");
 
-// 图片加载检测
-document.querySelectorAll("img").forEach((img, index) => {
-  img.addEventListener("load", () => {
-    console.log(`🖼️ 图片${index + 1}加载成功: ${img.src}`);
-  });
-  img.addEventListener("error", () => {
-    console.error(`❌ 图片${index + 1}加载失败: ${img.src}`);
-  });
-});
+  /* ==================================
+     SUPABASE CONFIGURATION
+  ================================== */
 
-// WhatsApp按钮点击日志
-const btn = document.getElementById("whatsappBtn");
-if (btn) {
-  btn.addEventListener("click", () => {
-    console.log("📲 用户点击了 WhatsApp 按钮");
-  });
-} else {
-  console.warn("⚠️ 找不到 WhatsApp 按钮");
-}
+  const SUPABASE_URL =
+    "https://ptqukagqumokeytpnrdk.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_AWtqzy_cWxpfvj2AnQWyOg_mVvF5yOV";
+
+
+  const supabaseClient =
+    supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+
+  /* ==================================
+     VARIABLES
+  ================================== */
+
+  let customers = [];
+
+
+
+  /* ==================================
+     DOM
+  ================================== */
+
+  const loginPage =
+    document.getElementById("loginPage");
+
+  const dashboard =
+    document.getElementById("dashboard");
+
+  const loginForm =
+    document.getElementById("loginForm");
+
+  const loginButton =
+    document.getElementById("loginButton");
+
+  const loginError =
+    document.getElementById("loginError");
+
+  const logoutButton =
+    document.getElementById("logoutButton");
+
+  const customerTable =
+    document.getElementById("customerTable");
+
+  const searchInput =
+    document.getElementById("searchInput");
+
+  const refreshButton =
+    document.getElementById("refreshButton");
+
+  const exportButton =
+    document.getElementById("exportButton");
+
+  const totalCustomers =
+    document.getElementById("totalCustomers");
+
+  const whatsappCustomers =
+    document.getElementById("whatsappCustomers");
+
+  const emailCustomers =
+    document.getElementById("emailCustomers");
+
+  const customerModal =
+    document.getElementById("customerModal");
+
+  const customerDetails =
+    document.getElementById("customerDetails");
+
+  const closeModal =
+    document.getElementById("closeModal");
+
+
+
+  /* ==================================
+     CHECK LOGIN SESSION
+  ================================== */
+
+  async function checkSession() {
+
+    const {
+      data: {
+        session
+      }
+    } = await supabaseClient
+      .auth
+      .getSession();
+
+
+    if (session) {
+
+      showDashboard();
+
+    } else {
+
+      showLogin();
+
+    }
+
+  }
+
+
+
+  /* ==================================
+     LOGIN
+  ================================== */
+
+  loginForm.addEventListener(
+    "submit",
+    async function(event) {
+
+      event.preventDefault();
+
+
+      const email =
+        document
+          .getElementById("loginEmail")
+          .value
+          .trim();
+
+
+      const password =
+        document
+          .getElementById("loginPassword")
+          .value;
+
+
+      loginButton.disabled = true;
+
+      loginButton.textContent =
+        "Signing in...";
+
+      loginError.style.display =
+        "none";
+
+
+      const {
+        error
+      } = await supabaseClient
+        .auth
+        .signInWithPassword({
+
+          email: email,
+
+          password: password
+
+        });
+
+
+      if (error) {
+
+        loginError.textContent =
+          error.message;
+
+        loginError.style.display =
+          "block";
+
+        loginButton.disabled =
+          false;
+
+        loginButton.textContent =
+          "Sign In";
+
+        return;
+
+      }
+
+
+      loginButton.disabled =
+        false;
+
+      loginButton.textContent =
+        "Sign In";
+
+
+      showDashboard();
+
+    }
+  );
+
+
+
+  /* ==================================
+     LOGOUT
+  ================================== */
+
+  logoutButton.addEventListener(
+    "click",
+    async function() {
+
+      await supabaseClient
+        .auth
+        .signOut();
+
+      showLogin();
+
+    }
+  );
+
+
+
+  /* ==================================
+     SHOW LOGIN
+  ================================== */
+
+  function showLogin() {
+
+    loginPage.style.display =
+      "flex";
+
+    dashboard.style.display =
+      "none";
+
+  }
+
+
+
+  /* ==================================
+     SHOW DASHBOARD
+  ================================== */
+
+  async function showDashboard() {
+
+    loginPage.style.display =
+      "none";
+
+    dashboard.style.display =
+      "block";
+
+    await loadCustomers();
+
+  }
+
+
+
+  /* ==================================
+     LOAD CUSTOMERS
+  ================================== */
+
+  async function loadCustomers() {
+
+    customerTable.innerHTML = `
+      <tr>
+        <td colspan="9" class="loading">
+          Loading customers...
+        </td>
+      </tr>
+    `;
+
+
+    const {
+      data,
+      error
+    } = await supabaseClient
+      .from("customers")
+      .select("*")
+      .order(
+        "created_at",
+        {
+          ascending: false
+        }
+      );
+
+
+    if (error) {
+
+      console.error(error);
+
+      customerTable.innerHTML = `
+        <tr>
+          <td colspan="9" class="empty">
+            Failed to load customers.<br><br>
+            ${escapeHtml(error.message)}
+          </td>
+        </tr>
+      `;
+
+      return;
+
+    }
+
+
+    customers =
+      data || [];
+
+
+    updateStats();
+
+    renderCustomers(
+      customers
+    );
+
+  }
+
+
+
+  /* ==================================
+     UPDATE STATS
+  ================================== */
+
+  function updateStats() {
+
+    totalCustomers.textContent =
+      customers.length;
+
+
+    whatsappCustomers.textContent =
+      customers.filter(
+        customer =>
+          customer.whatsapp &&
+          customer.whatsapp.trim() !== ""
+      ).length;
+
+
+    emailCustomers.textContent =
+      customers.filter(
+        customer =>
+          customer.email &&
+          customer.email.trim() !== ""
+      ).length;
+
+  }
+
+
+
+  /* ==================================
+     RENDER CUSTOMERS
+  ================================== */
+
+  function renderCustomers(
+    list
+  ) {
+
+    if (!list.length) {
+
+      customerTable.innerHTML = `
+        <tr>
+          <td colspan="9" class="empty">
+            No customers found.
+          </td>
+        </tr>
+      `;
+
+      return;
+
+    }
+
+
+    customerTable.innerHTML =
+      list.map(
+        customer => `
+
+        <tr>
+
+          <td>
+
+            <div class="salon-name">
+              ${escapeHtml(
+                customer.salon_name || "-"
+              )}
+            </div>
+
+          </td>
+
+
+          <td>
+            ${escapeHtml(
+              customer.contact_person || "-"
+            )}
+          </td>
+
+
+          <td>
+            ${escapeHtml(
+              customer.location || "-"
+            )}
+          </td>
+
+
+          <td>
+            ${escapeHtml(
+              customer.store_size || "-"
+            )}
+          </td>
+
+
+          <td>
+            ${escapeHtml(
+              customer.phone || "-"
+            )}
+          </td>
+
+
+          <td>
+            ${escapeHtml(
+              customer.whatsapp || "-"
+            )}
+          </td>
+
+
+          <td>
+            ${escapeHtml(
+              customer.email || "-"
+            )}
+          </td>
+
+
+          <td>
+            ${formatDate(
+              customer.created_at
+            )}
+          </td>
+
+
+          <td>
+
+            <button
+              class="action-button"
+              onclick="viewCustomer('${customer.id}')"
+            >
+              View
+            </button>
+
+
+            <button
+              class="action-button delete-button"
+              onclick="deleteCustomer('${customer.id}')"
+            >
+              Delete
+            </button>
+
+          </td>
+
+        </tr>
+
+      `
+      ).join("");
+
+  }
+
+
+
+  /* ==================================
+     SEARCH
+  ================================== */
+
+  searchInput.addEventListener(
+    "input",
+    function() {
+
+      const keyword =
+        this.value
+          .toLowerCase()
+          .trim();
+
+
+      if (!keyword) {
+
+        renderCustomers(
+          customers
+        );
+
+        return;
+
+      }
+
+
+      const filtered =
+        customers.filter(
+          customer => {
+
+            const searchableText = [
+
+              customer.salon_name,
+
+              customer.contact_person,
+
+              customer.location,
+
+              customer.store_size,
+
+              customer.phone,
+
+              customer.whatsapp,
+
+              customer.email,
+
+              customer.message
+
+            ]
+              .filter(Boolean)
+              .join(" ")
+              .toLowerCase();
+
+
+            return searchableText
+              .includes(keyword);
+
+          }
+        );
+
+
+      renderCustomers(
+        filtered
+      );
+
+    }
+  );
+
+
+
+  /* ==================================
+     VIEW CUSTOMER
+  ================================== */
+
+  window.viewCustomer =
+    function(id) {
+
+      const customer =
+        customers.find(
+          item =>
+            String(item.id) === String(id)
+        );
+
+
+      if (!customer) {
+        return;
+      }
+
+
+      customerDetails.innerHTML = `
+
+        ${detail(
+          "Beauty Salon Name",
+          customer.salon_name
+        )}
+
+        ${detail(
+          "Store Size",
+          customer.store_size
+        )}
+
+        ${detail(
+          "Location",
+          customer.location
+        )}
+
+        ${detail(
+          "Contact Person",
+          customer.contact_person
+        )}
+
+        ${detail(
+          "Phone Number",
+          customer.phone
+        )}
+
+        ${detail(
+          "WhatsApp",
+          customer.whatsapp
+        )}
+
+        ${detail(
+          "Email",
+          customer.email
+        )}
+
+        ${detail(
+          "Additional Message",
+          customer.message
+        )}
+
+        ${detail(
+          "Submitted",
+          formatDate(
+            customer.created_at
+          )
+        )}
+
+      `;
+
+
+      customerModal.style.display =
+        "flex";
+
+    };
+
+
+
+  /* ==================================
+     DETAIL HELPER
+  ================================== */
+
+  function detail(
+    label,
+    value
+  ) {
+
+    return `
+
+      <div class="detail-row">
+
+        <div class="detail-label">
+          ${label}
+        </div>
+
+        <div class="detail-value">
+          ${
+            value
+              ? escapeHtml(String(value))
+              : "-"
+          }
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+
+  /* ==================================
+     CLOSE MODAL
+  ================================== */
+
+  closeModal.addEventListener(
+    "click",
+    function() {
+
+      customerModal.style.display =
+        "none";
+
+    }
+  );
+
+
+  customerModal.addEventListener(
+    "click",
+    function(event) {
+
+      if (
+        event.target ===
+        customerModal
+      ) {
+
+        customerModal.style.display =
+          "none";
+
+      }
+
+    }
+  );
+
+
+
+  /* ==================================
+     DELETE CUSTOMER
+  ================================== */
+
+  window.deleteCustomer =
+    async function(id) {
+
+      const customer =
+        customers.find(
+          item =>
+            String(item.id) === String(id)
+        );
+
+
+      if (!customer) {
+        return;
+      }
+
+
+      const salonName =
+        customer.salon_name ||
+        "this customer";
+
+
+      const confirmed =
+        confirm(
+          `Are you sure you want to delete "${salonName}"?`
+        );
+
+
+      if (!confirmed) {
+        return;
+      }
+
+
+      const {
+        error
+      } = await supabaseClient
+        .from("customers")
+        .delete()
+        .eq("id", id);
+
+
+      if (error) {
+
+        alert(
+          "Failed to delete customer: " +
+          error.message
+        );
+
+        return;
+
+      }
+
+
+      await loadCustomers();
+
+    };
+
+
+
+  /* ==================================
+     REFRESH
+  ================================== */
+
+  refreshButton.addEventListener(
+    "click",
+    async function() {
+
+      await loadCustomers();
+
+    }
+  );
+
+
+
+  /* ==================================
+     EXPORT CSV
+  ================================== */
+
+  exportButton.addEventListener(
+    "click",
+    function() {
+
+      if (!customers.length) {
+
+        alert(
+          "There are no customer records to export."
+        );
+
+        return;
+
+      }
+
+
+      const headers = [
+
+        "Beauty Salon Name",
+
+        "Store Size",
+
+        "Location",
+
+        "Contact Person",
+
+        "Phone Number",
+
+        "WhatsApp",
+
+        "Email",
+
+        "Additional Message",
+
+        "Submitted"
+
+      ];
+
+
+      const rows =
+        customers.map(
+          customer => [
+
+            customer.salon_name || "",
+
+            customer.store_size || "",
+
+            customer.location || "",
+
+            customer.contact_person || "",
+
+            customer.phone || "",
+
+            customer.whatsapp || "",
+
+            customer.email || "",
+
+            customer.message || "",
+
+            customer.created_at || ""
+
+          ]
+        );
+
+
+      const csv = [
+
+        headers,
+
+        ...rows
+
+      ]
+        .map(
+          row =>
+            row
+              .map(csvEscape)
+              .join(",")
+        )
+        .join("\n");
+
+
+      const blob =
+        new Blob(
+          [
+            "\uFEFF" + csv
+          ],
+          {
+            type:
+              "text/csv;charset=utf-8;"
+          }
+        );
+
+
+      const url =
+        URL.createObjectURL(
+          blob
+        );
+
+
+      const link =
+        document.createElement(
+          "a"
+        );
+
+
+      link.href = url;
+
+      link.download =
+        "customers-" +
+        new Date()
+          .toISOString()
+          .slice(0, 10) +
+        ".csv";
+
+
+      document.body.appendChild(
+        link
+      );
+
+      link.click();
+
+      document.body.removeChild(
+        link
+      );
+
+      URL.revokeObjectURL(
+        url
+      );
+
+    }
+  );
+
+
+
+  /* ==================================
+     CSV ESCAPE
+  ================================== */
+
+  function csvEscape(
+    value
+  ) {
+
+    const text =
+      String(value)
+        .replace(/"/g, '""');
+
+
+    return `"${text}"`;
+
+  }
+
+
+
+  /* ==================================
+     DATE FORMAT
+  ================================== */
+
+  function formatDate(
+    dateString
+  ) {
+
+    if (!dateString) {
+      return "-";
+    }
+
+
+    const date =
+      new Date(dateString);
+
+
+    return date.toLocaleString(
+      "en-US",
+      {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+      }
+    );
+
+  }
+
+
+
+  /* ==================================
+     HTML ESCAPE
+  ================================== */
+
+  function escapeHtml(
+    value
+  ) {
+
+    return String(value)
+      .replace(
+        /&/g,
+        "&amp;"
+      )
+      .replace(
+        /</g,
+        "&lt;"
+      )
+      .replace(
+        />/g,
+        "&gt;"
+      )
+      .replace(
+        /"/g,
+        "&quot;"
+      )
+      .replace(
+        /'/g,
+        "&#039;"
+      );
+
+  }
+
+
+
+  /* ==================================
+     AUTH STATE LISTENER
+  ================================== */
+
+  supabaseClient
+    .auth
+    .onAuthStateChange(
+      function(
+        event,
+        session
+      ) {
+
+        if (session) {
+
+          loginPage.style.display =
+            "none";
+
+          dashboard.style.display =
+            "block";
+
+        } else {
+
+          loginPage.style.display =
+            "flex";
+
+          dashboard.style.display =
+            "none";
+
+        }
+
+      }
+    );
+
+
+
+  /* ==================================
+     START
+  ================================== */
+
+  checkSession();
+
 </script>
 
 </body>
 </html>
+```
