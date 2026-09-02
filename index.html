@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Salon Information</title>
 
@@ -12,13 +18,20 @@
   >
 
   <style>
+
+    /* ==========================================
+       GLOBAL
+       ========================================== */
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+
     body {
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -48,320 +61,811 @@
       color: #222;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
       padding: 30px 16px;
+
     }
+
 
     .container {
+
       width: 100%;
+
       max-width: 520px;
+
     }
+
+
+    /* ==========================================
+       CARD
+       ========================================== */
 
     .card {
-      background: rgba(255, 255, 255, 0.90);
 
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background:
+        rgba(255, 255, 255, 0.90);
 
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      backdrop-filter:
+        blur(20px);
 
-      border-radius: 28px;
+      -webkit-backdrop-filter:
+        blur(20px);
 
-      padding: 40px;
+      border:
+        1px solid rgba(255, 255, 255, 0.8);
+
+      border-radius:
+        28px;
+
+      padding:
+        40px;
 
       box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.08);
+        0 25px 70px
+        rgba(0, 0, 0, 0.08);
 
-      animation: fadeUp 0.6s ease;
+      animation:
+        fadeUp 0.6s ease;
+
     }
 
+
     @keyframes fadeUp {
+
       from {
+
         opacity: 0;
-        transform: translateY(20px);
+
+        transform:
+          translateY(20px);
+
       }
 
       to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+          translateY(0);
+
       }
+
     }
 
+
+    /* ==========================================
+       LOGO
+       ========================================== */
+
     .logo {
+
       width: 58px;
+
       height: 58px;
 
-      border-radius: 18px;
+      border-radius:
+        18px;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
       font-size: 25px;
 
-      background: #111;
-      color: white;
+      background:
+        #111;
 
-      margin-bottom: 22px;
+      color:
+        white;
+
+      margin-bottom:
+        22px;
+
     }
+
+
+    /* ==========================================
+       TITLE
+       ========================================== */
 
     h1 {
-      font-size: 30px;
-      line-height: 1.25;
 
-      margin-bottom: 10px;
+      font-size:
+        30px;
 
-      letter-spacing: -0.5px;
+      line-height:
+        1.25;
+
+      margin-bottom:
+        10px;
+
+      letter-spacing:
+        -0.5px;
+
     }
+
 
     .subtitle {
-      color: #777;
 
-      font-size: 15px;
+      color:
+        #777;
 
-      line-height: 1.7;
+      font-size:
+        15px;
 
-      margin-bottom: 30px;
+      line-height:
+        1.7;
+
+      margin-bottom:
+        30px;
+
     }
+
+
+    /* ==========================================
+       SECTION TITLE
+       ========================================== */
 
     .section-title {
-      font-size: 13px;
 
-      font-weight: 700;
+      font-size:
+        13px;
 
-      text-transform: uppercase;
+      font-weight:
+        700;
 
-      letter-spacing: 1px;
+      text-transform:
+        uppercase;
 
-      color: #999;
+      letter-spacing:
+        1px;
 
-      margin: 28px 0 16px;
+      color:
+        #999;
+
+      margin:
+        28px 0 16px;
+
     }
+
+
+    /* ==========================================
+       FORM
+       ========================================== */
 
     .form-group {
-      margin-bottom: 18px;
+
+      margin-bottom:
+        18px;
+
     }
+
 
     label {
-      display: block;
 
-      font-size: 14px;
+      display:
+        block;
 
-      font-weight: 600;
+      font-size:
+        14px;
 
-      margin-bottom: 8px;
+      font-weight:
+        600;
 
-      color: #333;
+      margin-bottom:
+        8px;
+
+      color:
+        #333;
+
     }
+
 
     .required {
-      color: #e35d6a;
+
+      color:
+        #e35d6a;
+
     }
+
 
     input,
     textarea {
-      width: 100%;
 
-      border: 1px solid #e5e5e5;
+      width:
+        100%;
 
-      background: #fafafa;
+      border:
+        1px solid #e5e5e5;
 
-      border-radius: 14px;
+      background:
+        #fafafa;
 
-      padding: 14px 15px;
+      border-radius:
+        14px;
 
-      font-size: 15px;
+      padding:
+        14px 15px;
 
-      outline: none;
+      font-size:
+        15px;
 
-      transition: all 0.2s ease;
+      outline:
+        none;
 
-      font-family: inherit;
+      transition:
+        all 0.2s ease;
+
+      font-family:
+        inherit;
+
     }
+
 
     input:focus,
     textarea:focus {
-      background: white;
 
-      border-color: #999;
+      background:
+        white;
+
+      border-color:
+        #999;
 
       box-shadow:
-        0 0 0 4px rgba(0, 0, 0, 0.04);
+        0 0 0 4px
+        rgba(0, 0, 0, 0.04);
+
     }
+
 
     textarea {
-      resize: vertical;
 
-      min-height: 110px;
+      resize:
+        vertical;
+
+      min-height:
+        110px;
+
     }
+
+
+    /* ==========================================
+       CONSENT
+       ========================================== */
 
     .consent {
-      display: flex;
 
-      align-items: flex-start;
+      display:
+        flex;
 
-      gap: 10px;
+      align-items:
+        flex-start;
 
-      margin: 22px 0;
+      gap:
+        10px;
 
-      color: #777;
+      margin:
+        22px 0;
 
-      font-size: 13px;
+      color:
+        #777;
 
-      line-height: 1.6;
+      font-size:
+        13px;
+
+      line-height:
+        1.6;
+
     }
+
 
     .consent input {
-      width: 17px;
-      height: 17px;
 
-      margin-top: 2px;
+      width:
+        17px;
 
-      flex-shrink: 0;
+      height:
+        17px;
+
+      margin-top:
+        2px;
+
+      flex-shrink:
+        0;
+
     }
+
+
+    /* ==========================================
+       SUBMIT BUTTON
+       ========================================== */
 
     button {
-      width: 100%;
 
-      border: none;
+      width:
+        100%;
 
-      background: #111;
+      border:
+        none;
 
-      color: white;
+      background:
+        #111;
 
-      border-radius: 15px;
+      color:
+        white;
 
-      padding: 16px;
+      border-radius:
+        15px;
 
-      font-size: 16px;
+      padding:
+        16px;
 
-      font-weight: 600;
+      font-size:
+        16px;
 
-      cursor: pointer;
+      font-weight:
+        600;
 
-      transition: all 0.2s ease;
+      cursor:
+        pointer;
+
+      transition:
+        all 0.2s ease;
+
     }
+
 
     button:hover {
-      background: #333;
 
-      transform: translateY(-1px);
+      background:
+        #333;
+
+      transform:
+        translateY(-1px);
 
       box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.12);
+        0 10px 25px
+        rgba(0, 0, 0, 0.12);
+
     }
+
 
     button:active {
-      transform: translateY(0);
+
+      transform:
+        translateY(0);
+
     }
+
 
     button:disabled {
-      opacity: 0.6;
 
-      cursor: not-allowed;
+      opacity:
+        0.6;
 
-      transform: none;
+      cursor:
+        not-allowed;
 
-      box-shadow: none;
+      transform:
+        none;
+
+      box-shadow:
+        none;
+
     }
+
+
+    /* ==========================================
+       MESSAGE
+       ========================================== */
 
     #message {
-      margin-top: 18px;
 
-      text-align: center;
+      margin-top:
+        18px;
 
-      font-size: 14px;
+      text-align:
+        center;
 
-      line-height: 1.6;
+      font-size:
+        14px;
 
-      min-height: 20px;
+      line-height:
+        1.6;
+
+      min-height:
+        20px;
+
     }
 
-    .success {
-      color: #16834b;
-    }
 
     .error {
-      color: #d64545;
+
+      color:
+        #d64545;
+
     }
+
+
+    /* ==========================================
+       FOOTER
+       ========================================== */
 
     .footer {
-      text-align: center;
 
-      margin-top: 20px;
+      text-align:
+        center;
 
-      color: #999;
+      margin-top:
+        20px;
 
-      font-size: 12px;
+      color:
+        #999;
+
+      font-size:
+        12px;
+
     }
 
-    /*
-      Hidden iframe:
-      Google Forms will receive the submission here
-      without leaving the current page.
-    */
+
+    /* ==========================================
+       SUCCESS MODAL
+       ========================================== */
+
+    .modal {
+
+      position:
+        fixed;
+
+      inset:
+        0;
+
+      background:
+        rgba(0, 0, 0, 0.35);
+
+      display:
+        none;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      padding:
+        20px;
+
+      z-index:
+        9999;
+
+      backdrop-filter:
+        blur(5px);
+
+      -webkit-backdrop-filter:
+        blur(5px);
+
+    }
+
+
+    .modal.show {
+
+      display:
+        flex;
+
+    }
+
+
+    /* ==========================================
+       SUCCESS BOX
+       ========================================== */
+
+    .modal-box {
+
+      width:
+        100%;
+
+      max-width:
+        380px;
+
+      background:
+        white;
+
+      border-radius:
+        24px;
+
+      padding:
+        35px 30px;
+
+      text-align:
+        center;
+
+      box-shadow:
+        0 25px 80px
+        rgba(0, 0, 0, 0.18);
+
+      animation:
+        modalIn 0.3s ease;
+
+    }
+
+
+    @keyframes modalIn {
+
+      from {
+
+        opacity:
+          0;
+
+        transform:
+          scale(0.92)
+          translateY(10px);
+
+      }
+
+      to {
+
+        opacity:
+          1;
+
+        transform:
+          scale(1)
+          translateY(0);
+
+      }
+
+    }
+
+
+    /* ==========================================
+       SUCCESS ICON
+       ========================================== */
+
+    .success-icon {
+
+      width:
+        64px;
+
+      height:
+        64px;
+
+      margin:
+        0 auto 20px;
+
+      border-radius:
+        50%;
+
+      background:
+        #e8f7ef;
+
+      color:
+        #16834b;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      font-size:
+        32px;
+
+      font-weight:
+        700;
+
+    }
+
+
+    /* ==========================================
+       SUCCESS TEXT
+       ========================================== */
+
+    .modal-box h2 {
+
+      font-size:
+        25px;
+
+      margin-bottom:
+        10px;
+
+    }
+
+
+    .modal-box p {
+
+      color:
+        #777;
+
+      font-size:
+        15px;
+
+      line-height:
+        1.6;
+
+      margin-bottom:
+        25px;
+
+    }
+
+
+    /* ==========================================
+       MODAL BUTTON
+       ========================================== */
+
+    .modal-box button {
+
+      width:
+        100%;
+
+      background:
+        #111;
+
+      color:
+        white;
+
+      border:
+        none;
+
+      border-radius:
+        14px;
+
+      padding:
+        14px;
+
+      font-size:
+        15px;
+
+      font-weight:
+        600;
+
+      cursor:
+        pointer;
+
+    }
+
+
+    .modal-box button:hover {
+
+      background:
+        #333;
+
+    }
+
+
+    /* ==========================================
+       HIDDEN GOOGLE FORM IFRAME
+       ========================================== */
 
     #hidden_iframe {
-      display: none;
+
+      display:
+        none;
+
     }
+
+
+    /* ==========================================
+       MOBILE
+       ========================================== */
 
     @media (max-width: 520px) {
+
       body {
-        padding: 15px;
+
+        padding:
+          15px;
+
       }
+
 
       .card {
-        padding: 28px 22px;
 
-        border-radius: 24px;
+        padding:
+          28px 22px;
+
+        border-radius:
+          24px;
+
       }
+
 
       h1 {
-        font-size: 26px;
+
+        font-size:
+          26px;
+
       }
 
+
       .logo {
-        width: 52px;
-        height: 52px;
+
+        width:
+          52px;
+
+        height:
+          52px;
+
       }
+
+
+      .modal-box {
+
+        padding:
+          30px 24px;
+
+      }
+
     }
+
   </style>
 
 </head>
 
+
 <body>
+
 
   <div class="container">
 
+
+    <!-- ======================================
+         MAIN CARD
+         ====================================== -->
+
     <div class="card">
+
 
       <div class="logo">
         ✦
       </div>
 
-      <h1>Salon Information</h1>
+
+      <h1>
+        Salon Information
+      </h1>
+
 
       <p class="subtitle">
+
         Please provide your salon information below.
         Our team will review your details and get
         in touch with you shortly.
+
       </p>
+
 
       <form id="customerForm">
 
-        <!-- Salon Information -->
+
+        <!-- ==================================
+             SALON INFORMATION
+             ================================== -->
 
         <div class="section-title">
           Salon Information
         </div>
 
+
         <div class="form-group">
+
           <label for="salonName">
+
             Beauty Salon Name
-            <span class="required">*</span>
+
+            <span class="required">
+              *
+            </span>
+
           </label>
+
 
           <input
             type="text"
@@ -369,25 +873,38 @@
             placeholder="Enter salon name"
             required
           >
+
         </div>
 
+
         <div class="form-group">
+
           <label for="storeSize">
             Store Size
           </label>
+
 
           <input
             type="text"
             id="storeSize"
             placeholder="e.g. 100 sqm"
           >
+
         </div>
 
+
         <div class="form-group">
+
           <label for="location">
+
             Location
-            <span class="required">*</span>
+
+            <span class="required">
+              *
+            </span>
+
           </label>
+
 
           <input
             type="text"
@@ -395,20 +912,31 @@
             placeholder="City / District / Country"
             required
           >
+
         </div>
 
 
-        <!-- Contact Information -->
+        <!-- ==================================
+             CONTACT INFORMATION
+             ================================== -->
 
         <div class="section-title">
           Contact Information
         </div>
 
+
         <div class="form-group">
+
           <label for="contactPerson">
+
             Contact Person
-            <span class="required">*</span>
+
+            <span class="required">
+              *
+            </span>
+
           </label>
+
 
           <input
             type="text"
@@ -416,13 +944,22 @@
             placeholder="Enter contact person's name"
             required
           >
+
         </div>
 
+
         <div class="form-group">
+
           <label for="phone">
+
             Phone Number
-            <span class="required">*</span>
+
+            <span class="required">
+              *
+            </span>
+
           </label>
+
 
           <input
             type="tel"
@@ -430,54 +967,72 @@
             placeholder="Enter phone number"
             required
           >
+
         </div>
 
+
         <div class="form-group">
+
           <label for="whatsapp">
             WhatsApp
           </label>
+
 
           <input
             type="tel"
             id="whatsapp"
             placeholder="Enter WhatsApp number"
           >
+
         </div>
 
+
         <div class="form-group">
+
           <label for="email">
             Email
           </label>
+
 
           <input
             type="email"
             id="email"
             placeholder="name@example.com"
           >
+
         </div>
 
 
-        <!-- Additional Information -->
+        <!-- ==================================
+             ADDITIONAL INFORMATION
+             ================================== -->
 
         <div class="section-title">
           Additional Information
         </div>
 
+
         <div class="form-group">
+
           <label for="messageText">
             Additional Message
           </label>
+
 
           <textarea
             id="messageText"
             placeholder="Tell us more about your salon or requirements..."
           ></textarea>
+
         </div>
 
 
-        <!-- Consent -->
+        <!-- ==================================
+             CONSENT
+             ================================== -->
 
         <label class="consent">
+
 
           <input
             type="checkbox"
@@ -485,50 +1040,120 @@
             required
           >
 
+
           <span>
+
             I agree to submit the above information
             and allow you to contact me regarding
             my inquiry.
+
           </span>
+
 
         </label>
 
 
-        <!-- Submit -->
+        <!-- ==================================
+             SUBMIT
+             ================================== -->
 
         <button
           type="submit"
           id="submitButton"
         >
+
           Submit Information
+
         </button>
+
 
         <div id="message"></div>
 
+
       </form>
 
+
     </div>
 
+
+    <!-- ======================================
+         FOOTER
+         ====================================== -->
+
     <div class="footer">
-      © 2026 Freedress Company. All rights reserved.
+
+      © 2026 Freedress Company.
+      All rights reserved.
+
     </div>
+
 
   </div>
 
 
-  <!--
-    Invisible iframe.
-    Google Forms submission happens inside this iframe.
-  -->
+  <!-- ========================================
+       HIDDEN IFRAME
+
+       Google Forms receives the submission
+       inside this iframe so the user stays
+       on your website.
+       ======================================== -->
 
   <iframe
     name="hidden_iframe"
     id="hidden_iframe"
-    style="display:none;"
   ></iframe>
 
 
+  <!-- ========================================
+       SUCCESS MODAL
+       ======================================== -->
+
+  <div
+    id="successModal"
+    class="modal"
+  >
+
+
+    <div class="modal-box">
+
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+
+      <h2>
+        Thank you!
+      </h2>
+
+
+      <p>
+
+        Your information has been
+        submitted successfully.
+
+      </p>
+
+
+      <button
+        type="button"
+        id="closeModal"
+      >
+
+        OK
+
+      </button>
+
+
+    </div>
+
+
+  </div>
+
+
   <script>
+
 
     /* ==========================================
        GOOGLE FORM CONFIGURATION
@@ -543,13 +1168,33 @@
        ========================================== */
 
     const form =
-      document.getElementById("customerForm");
+      document.getElementById(
+        "customerForm"
+      );
+
 
     const button =
-      document.getElementById("submitButton");
+      document.getElementById(
+        "submitButton"
+      );
+
 
     const message =
-      document.getElementById("message");
+      document.getElementById(
+        "message"
+      );
+
+
+    const successModal =
+      document.getElementById(
+        "successModal"
+      );
+
+
+    const closeModal =
+      document.getElementById(
+        "closeModal"
+      );
 
 
     /* ==========================================
@@ -560,11 +1205,12 @@
       "submit",
       function(event) {
 
+
         event.preventDefault();
 
 
         /* ======================================
-           GET VALUES
+           GET FORM VALUES
            ====================================== */
 
         const salonName =
@@ -627,30 +1273,43 @@
            DISABLE BUTTON
            ====================================== */
 
-        button.disabled = true;
+        button.disabled =
+          true;
+
 
         button.innerText =
           "Submitting...";
 
-        message.className = "";
 
-        message.innerText = "";
+        message.className =
+          "";
+
+
+        message.innerText =
+          "";
 
 
         /* ======================================
-           CREATE GOOGLE FORM SUBMISSION
+           CREATE TEMPORARY GOOGLE FORM
            ====================================== */
 
         const submitForm =
-          document.createElement("form");
+          document.createElement(
+            "form"
+          );
 
-        submitForm.method = "POST";
+
+        submitForm.method =
+          "POST";
+
 
         submitForm.action =
           GOOGLE_FORM_URL;
 
+
         submitForm.target =
           "hidden_iframe";
+
 
         submitForm.style.display =
           "none";
@@ -658,30 +1317,62 @@
 
         /* ======================================
            GOOGLE FORM FIELD MAPPING
+
+           Salon Name
+           entry.1713920276
+
+           Store Size
+           entry.951870254
+
+           Location
+           entry.30164564
+
+           Contact Person
+           entry.1454874061
+
+           Phone
+           entry.1900115347
+
+           WhatsApp
+           entry.1396736597
+
+           Email
+           entry.1037038169
+
+           Additional Message
+           entry.1989603950
            ====================================== */
 
         const fields = {
 
+
           "entry.1713920276":
             salonName,
+
 
           "entry.951870254":
             storeSize,
 
+
           "entry.30164564":
             location,
+
 
           "entry.1454874061":
             contactPerson,
 
+
           "entry.1900115347":
             phone,
+
 
           "entry.1396736597":
             whatsapp,
 
+
           "entry.1037038169":
             email,
+
 
           "entry.1989603950":
             messageText
@@ -696,19 +1387,29 @@
         Object.keys(fields).forEach(
           function(name) {
 
+
             const input =
-              document.createElement("input");
+              document.createElement(
+                "input"
+              );
+
 
             input.type =
               "hidden";
 
+
             input.name =
               name;
+
 
             input.value =
               fields[name];
 
-            submitForm.appendChild(input);
+
+            submitForm.appendChild(
+              input
+            );
+
 
           }
         );
@@ -722,24 +1423,26 @@
           submitForm
         );
 
+
         submitForm.submit();
 
 
         /* ======================================
-           SHOW SUCCESS MESSAGE
+           SHOW SUCCESS MODAL
            ====================================== */
 
         setTimeout(
           function() {
 
-            message.className =
-              "success";
 
-            message.innerText =
-              "✓ Thank you! Your information has been submitted successfully.";
+            /* Show modal */
+
+            successModal.classList.add(
+              "show"
+            );
 
 
-            /* Reset visible form */
+            /* Reset form */
 
             form.reset();
 
@@ -749,21 +1452,95 @@
             submitForm.remove();
 
 
-            /* Enable button */
+            /* Reset button */
 
-            button.disabled = false;
+            button.disabled =
+              false;
+
 
             button.innerText =
               "Submit Information";
+
 
           },
           1000
         );
 
+
       }
     );
 
+
+    /* ==========================================
+       CLOSE SUCCESS MODAL
+       ========================================== */
+
+    closeModal.addEventListener(
+      "click",
+      function() {
+
+
+        successModal.classList.remove(
+          "show"
+        );
+
+
+      }
+    );
+
+
+    /* ==========================================
+       CLOSE MODAL WHEN CLICKING OUTSIDE
+       ========================================== */
+
+    successModal.addEventListener(
+      "click",
+      function(event) {
+
+
+        if (
+          event.target ===
+          successModal
+        ) {
+
+          successModal.classList.remove(
+            "show"
+          );
+
+        }
+
+
+      }
+    );
+
+
+    /* ==========================================
+       CLOSE MODAL WITH ESC KEY
+       ========================================== */
+
+    document.addEventListener(
+      "keydown",
+      function(event) {
+
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          successModal.classList.remove(
+            "show"
+          );
+
+        }
+
+
+      }
+    );
+
+
   </script>
 
+
 </body>
+
 </html>
