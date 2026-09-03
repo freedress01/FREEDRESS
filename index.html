@@ -1,1130 +1,531 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Salon Information</title>
 
-  <meta
-    name="description"
-    content="Submit your salon information and our team will get in touch with you."
-  >
-
   <style>
-
-    /* ==========================================
-       GLOBAL
-       ========================================== */
-
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     body {
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
-
-      min-height: 100vh;
-
-      /* NEW BACKGROUND COLOR */
+      margin: 0;
+      padding: 0;
       background: #464723;
-
-      color: #222;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 30px 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333;
     }
 
     .container {
       width: 100%;
-      max-width: 520px;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-
-    /* ==========================================
-       TOP IMAGE
-       ========================================== */
-
-    .top-image {
+    /* Banner */
+    .banner {
       width: 100%;
+      margin: 0;
+      padding: 0;
+    }
 
-      max-height: 260px;
-
-      object-fit: cover;
-
+    .banner img {
+      width: 100%;
+      height: auto;
       display: block;
-
-      border-radius: 28px;
-
-      margin-bottom: 20px;
-
-      box-shadow:
-        0 15px 40px
-        rgba(0, 0, 0, 0.18);
     }
 
-
-    /* ==========================================
-       CARD
-       ========================================== */
-
+    /* Main Card */
     .card {
-      background:
-        rgba(255, 255, 255, 0.95);
-
-      border:
-        1px solid
-        rgba(255, 255, 255, 0.8);
-
-      border-radius: 28px;
-
-      padding: 40px;
-
-      box-shadow:
-        0 25px 70px
-        rgba(0, 0, 0, 0.18);
-
-      animation:
-        fadeUp 0.6s ease;
+      background: #ffffff;
+      margin: 0;
+      padding: 35px 30px 40px;
     }
 
-    @keyframes fadeUp {
-
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-    }
-
-
-    /* ==========================================
-       LOGO
-       ========================================== */
-
-    .logo {
-      width: 58px;
-      height: 58px;
-
-      border-radius: 18px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 25px;
-
-      background: #464723;
-      color: white;
-
-      margin-bottom: 22px;
-    }
-
-
-    /* ==========================================
-       TITLE
-       ========================================== */
-
-    h1 {
-      font-size: 30px;
-
-      line-height: 1.25;
-
-      margin-bottom: 10px;
-
-      letter-spacing: -0.5px;
-    }
-
-    .subtitle {
-      color: #777;
-
-      font-size: 15px;
-
-      line-height: 1.7;
-
-      margin-bottom: 30px;
-    }
-
-
-    /* ==========================================
-       SECTION TITLE
-       ========================================== */
-
+    /* Section Title */
     .section-title {
-      font-size: 13px;
-
-      font-weight: 700;
-
-      text-transform: uppercase;
-
-      letter-spacing: 1px;
-
-      color: #777;
-
-      margin: 28px 0 16px;
+      font-size: 20px;
+      font-weight: 600;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      color: #464723;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
     }
 
+    .section-title:first-child {
+      margin-top: 0;
+    }
 
-    /* ==========================================
-       FORM
-       ========================================== */
-
+    /* Form Group */
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     label {
       display: block;
-
-      font-size: 14px;
-
+      font-size: 15px;
       font-weight: 600;
-
       margin-bottom: 8px;
-
       color: #333;
     }
 
     .required {
-      color: #d64545;
+      color: #c0392b;
     }
 
     input,
     textarea {
       width: 100%;
-
-      border: 1px solid #e5e5e5;
-
-      background: #fafafa;
-
-      border-radius: 14px;
-
-      padding: 14px 15px;
-
+      padding: 13px 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
       font-size: 15px;
-
-      outline: none;
-
-      transition: all 0.2s ease;
-
       font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
     }
 
     input:focus,
     textarea:focus {
-      background: white;
-
       border-color: #464723;
-
-      box-shadow:
-        0 0 0 4px
-        rgba(70, 71, 35, 0.12);
     }
 
     textarea {
+      min-height: 120px;
       resize: vertical;
-
-      min-height: 110px;
     }
 
-
-    /* ==========================================
-       CONSENT
-       ========================================== */
-
+    /* Consent */
     .consent {
       display: flex;
-
       align-items: flex-start;
-
       gap: 10px;
-
-      margin: 22px 0;
-
-      color: #777;
-
+      margin: 25px 0;
       font-size: 13px;
-
-      line-height: 1.6;
+      line-height: 1.5;
+      color: #666;
     }
 
     .consent input {
-      width: 17px;
-      height: 17px;
-
-      margin-top: 2px;
-
-      flex-shrink: 0;
-
-      accent-color: #464723;
+      width: auto;
+      margin-top: 3px;
     }
 
-
-    /* ==========================================
-       BUTTON
-       ========================================== */
-
-    button {
+    /* Submit Button */
+    .submit-btn {
       width: 100%;
-
-      border: none;
-
+      padding: 15px;
       background: #464723;
-
       color: white;
-
-      border-radius: 15px;
-
-      padding: 16px;
-
+      border: none;
+      border-radius: 5px;
       font-size: 16px;
-
       font-weight: 600;
-
       cursor: pointer;
-
-      transition: all 0.2s ease;
+      transition: opacity 0.2s;
     }
 
-    button:hover {
-      background: #30311a;
-
-      transform: translateY(-1px);
-
-      box-shadow:
-        0 10px 25px
-        rgba(0, 0, 0, 0.18);
+    .submit-btn:hover {
+      opacity: 0.9;
     }
 
-    button:active {
-      transform: translateY(0);
-    }
-
-    button:disabled {
+    .submit-btn:disabled {
       opacity: 0.6;
-
       cursor: not-allowed;
-
-      transform: none;
-
-      box-shadow: none;
     }
 
-
-    /* ==========================================
-       ERROR MESSAGE
-       ========================================== */
-
-    #message {
-      margin-top: 18px;
-
-      text-align: center;
-
-      font-size: 14px;
-
-      line-height: 1.6;
-
-      min-height: 20px;
-    }
-
-    .error {
-      color: #d64545;
-    }
-
-
-    /* ==========================================
-       FOOTER
-       ========================================== */
-
+    /* Footer */
     .footer {
       text-align: center;
-
-      margin-top: 20px;
-
-      color: rgba(255, 255, 255, 0.65);
-
+      padding: 20px;
+      color: #ffffff;
       font-size: 12px;
     }
 
-
-    /* ==========================================
-       SUCCESS MODAL
-       ========================================== */
+    /* Success Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
 
     .modal {
-      position: fixed;
-
-      inset: 0;
-
-      background:
-        rgba(0, 0, 0, 0.55);
-
-      display: none;
-
-      align-items: center;
-      justify-content: center;
-
-      padding: 20px;
-
-      z-index: 9999;
-
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-    }
-
-    .modal.show {
-      display: flex;
-    }
-
-    .modal-box {
+      background: #ffffff;
       width: 100%;
-
-      max-width: 380px;
-
-      background: white;
-
-      border-radius: 24px;
-
-      padding: 35px 30px;
-
+      max-width: 420px;
+      border-radius: 10px;
+      padding: 35px 25px;
       text-align: center;
-
-      box-shadow:
-        0 25px 80px
-        rgba(0, 0, 0, 0.25);
-
-      animation:
-        modalIn 0.3s ease;
     }
 
-    @keyframes modalIn {
-
-      from {
-        opacity: 0;
-
-        transform:
-          scale(0.92)
-          translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-
-        transform:
-          scale(1)
-          translateY(0);
-      }
-
-    }
-
-
-    /* ==========================================
-       SUCCESS ICON
-       ========================================== */
-
-    .success-icon {
-      width: 64px;
-      height: 64px;
-
-      margin: 0 auto 20px;
-
-      border-radius: 50%;
-
-      background: #edf0df;
-
+    .modal h2 {
+      margin-top: 0;
       color: #464723;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      font-size: 32px;
-
-      font-weight: 700;
     }
 
-    .modal-box h2 {
-      font-size: 25px;
-
-      margin-bottom: 10px;
-    }
-
-    .modal-box p {
-      color: #777;
-
-      font-size: 15px;
-
+    .modal p {
+      color: #666;
       line-height: 1.6;
-
-      margin-bottom: 25px;
     }
 
-    .modal-box button {
+    .modal button {
+      margin-top: 15px;
+      padding: 12px 30px;
       background: #464723;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
     }
 
-
-    /* ==========================================
-       HIDDEN IFRAME
-       ========================================== */
-
-    #hidden_iframe {
-      display: none;
-    }
-
-
-    /* ==========================================
-       MOBILE
-       ========================================== */
-
-    @media (max-width: 520px) {
-
-      body {
-        padding: 15px;
-      }
-
-      .top-image {
-        max-height: 200px;
-
-        border-radius: 22px;
-      }
-
+    /* Mobile */
+    @media (max-width: 600px) {
       .card {
-        padding: 28px 22px;
-
-        border-radius: 24px;
+        padding: 25px 20px 30px;
       }
 
-      h1 {
-        font-size: 26px;
+      .section-title {
+        font-size: 18px;
       }
-
-      .logo {
-        width: 52px;
-        height: 52px;
-      }
-
-      .modal-box {
-        padding: 30px 24px;
-      }
-
     }
-
   </style>
-
 </head>
-
 
 <body>
 
   <div class="container">
 
+    <!-- Banner -->
+    <div class="banner">
+      <img src="banner.jpg" alt="Freedress Beauty Salon Banner">
+    </div>
 
-    <!-- ======================================
-         TOP IMAGE
-
-         Change banner.jpg to your image filename.
-         Example:
-         src="banner.jpg"
-
-         Or use an online image URL.
-         ====================================== -->
-
-    <img
-      src="banner.jpg"
-      alt="Freedress Beauty Salon"
-      class="top-image"
-    >
-
-
-    <!-- ======================================
-         MAIN CARD
-         ====================================== -->
-
+    <!-- Form Card -->
     <div class="card">
-
-
-      <div class="logo">
-        ✦
-      </div>
-
-
-      <h1>
-        Salon Information
-      </h1>
-
-
-      <p class="subtitle">
-        Please provide your salon information below.
-        Our team will review your details and get
-        in touch with you shortly.
-      </p>
-
 
       <form id="customerForm">
 
-
-        <!-- SALON INFORMATION -->
-
-        <div class="section-title">
-          Salon Information
-        </div>
-
-
+        <!-- Salon Details -->
         <div class="form-group">
-
           <label for="salonName">
-            Beauty Salon Name
-            <span class="required">*</span>
+            Beauty Salon Name <span class="required">*</span>
           </label>
-
           <input
             type="text"
             id="salonName"
-            placeholder="Enter salon name"
+            name="salonName"
             required
+            placeholder="Enter salon name"
           >
-
         </div>
 
-
         <div class="form-group">
-
           <label for="storeSize">
             Store Size
           </label>
-
           <input
             type="text"
             id="storeSize"
+            name="storeSize"
             placeholder="e.g. 100 sqm"
           >
-
         </div>
 
-
         <div class="form-group">
-
           <label for="location">
-            Location
-            <span class="required">*</span>
+            Location <span class="required">*</span>
           </label>
-
           <input
             type="text"
             id="location"
-            placeholder="City / District / Country"
+            name="location"
             required
+            placeholder="Enter salon location"
           >
-
         </div>
 
 
-        <!-- CONTACT INFORMATION -->
-
+        <!-- Contact Information -->
         <div class="section-title">
           Contact Information
         </div>
 
-
         <div class="form-group">
-
           <label for="contactPerson">
-            Contact Person
-            <span class="required">*</span>
+            Contact Person <span class="required">*</span>
           </label>
-
           <input
             type="text"
             id="contactPerson"
-            placeholder="Enter contact person's name"
+            name="contactPerson"
             required
+            placeholder="Enter contact person's name"
           >
-
         </div>
 
-
         <div class="form-group">
-
           <label for="phone">
-            Phone Number
-            <span class="required">*</span>
+            Phone Number <span class="required">*</span>
           </label>
-
           <input
             type="tel"
             id="phone"
-            placeholder="Enter phone number"
+            name="phone"
             required
+            placeholder="Enter phone number"
           >
-
         </div>
 
-
         <div class="form-group">
-
           <label for="whatsapp">
             WhatsApp
           </label>
-
           <input
             type="tel"
             id="whatsapp"
+            name="whatsapp"
             placeholder="Enter WhatsApp number"
           >
-
         </div>
 
-
         <div class="form-group">
-
           <label for="email">
             Email
           </label>
-
           <input
             type="email"
             id="email"
-            placeholder="name@example.com"
+            name="email"
+            placeholder="Enter email address"
           >
-
         </div>
 
 
-        <!-- ADDITIONAL INFORMATION -->
-
+        <!-- Additional Information -->
         <div class="section-title">
           Additional Information
         </div>
 
-
         <div class="form-group">
-
-          <label for="messageText">
+          <label for="message">
             Additional Message
           </label>
-
           <textarea
-            id="messageText"
-            placeholder="Tell us more about your salon or requirements..."
+            id="message"
+            name="message"
+            placeholder="Anything else you would like us to know?"
           ></textarea>
-
         </div>
 
 
-        <!-- CONSENT -->
-
-        <label class="consent">
-
+        <!-- Consent -->
+        <div class="consent">
           <input
             type="checkbox"
             id="consent"
             required
           >
 
-          <span>
-            I agree to submit the above information
-            and allow you to contact me regarding
-            my inquiry.
-          </span>
-
-        </label>
+          <label for="consent">
+            I confirm that the information provided is accurate
+            and agree to be contacted regarding this inquiry.
+          </label>
+        </div>
 
 
-        <!-- SUBMIT BUTTON -->
-
+        <!-- Submit -->
         <button
           type="submit"
-          id="submitButton"
+          class="submit-btn"
+          id="submitBtn"
         >
           Submit Information
         </button>
-
-
-        <div id="message"></div>
-
 
       </form>
 
     </div>
 
-
-    <!-- FOOTER -->
-
     <div class="footer">
       © 2026 Freedress Company. All rights reserved.
     </div>
 
-
   </div>
 
 
-  <!-- ========================================
-       HIDDEN GOOGLE FORM IFRAME
-       ======================================== -->
-
+  <!-- Hidden Google Form -->
   <iframe
     name="hidden_iframe"
     id="hidden_iframe"
+    style="display:none;"
   ></iframe>
 
 
-  <!-- ========================================
-       SUCCESS MODAL
-       ======================================== -->
-
+  <!-- Success Modal -->
   <div
+    class="modal-overlay"
     id="successModal"
-    class="modal"
   >
+    <div class="modal">
 
-    <div class="modal-box">
-
-      <div class="success-icon">
-        ✓
-      </div>
-
-      <h2>
-        Thank you!
-      </h2>
+      <h2>Thank You!</h2>
 
       <p>
-        Your information has been
-        submitted successfully.
+        Your information has been submitted successfully.
+        Our team will review your details and get in touch
+        with you shortly.
       </p>
 
       <button
         type="button"
-        id="closeModal"
+        onclick="closeModal()"
       >
-        OK
+        Close
       </button>
 
     </div>
-
   </div>
 
 
   <script>
 
-
-    /* ==========================================
-       GOOGLE FORM URL
-       ========================================== */
-
     const GOOGLE_FORM_URL =
       "https://docs.google.com/forms/d/e/1FAIpQLScJg1mYA2TCy9VbuAE4PGURc57POKcTNHhrpN3ofSYhX6Zgmw/formResponse";
 
 
-    /* ==========================================
-       FORM ELEMENTS
-       ========================================== */
-
-    const form =
-      document.getElementById("customerForm");
-
-
-    const button =
-      document.getElementById("submitButton");
-
-
-    const message =
-      document.getElementById("message");
-
-
-    const successModal =
-      document.getElementById("successModal");
-
-
-    const closeModal =
-      document.getElementById("closeModal");
-
-
-    /* ==========================================
-       SUBMIT FORM
-       ========================================== */
-
-    form.addEventListener(
-      "submit",
-      function(event) {
+    document
+      .getElementById("customerForm")
+      .addEventListener("submit", function(event) {
 
         event.preventDefault();
 
+        const form = event.target;
+        const submitBtn =
+          document.getElementById("submitBtn");
 
-        /* Get values */
-
-        const salonName =
-          document
-            .getElementById("salonName")
-            .value
-            .trim();
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting...";
 
 
-        const storeSize =
-          document
-            .getElementById("storeSize")
-            .value
-            .trim();
+        /*
+         * Create temporary form
+         * and send data to Google Forms
+         */
 
-
-        const location =
-          document
-            .getElementById("location")
-            .value
-            .trim();
-
-
-        const contactPerson =
-          document
-            .getElementById("contactPerson")
-            .value
-            .trim();
-
-
-        const phone =
-          document
-            .getElementById("phone")
-            .value
-            .trim();
-
-
-        const whatsapp =
-          document
-            .getElementById("whatsapp")
-            .value
-            .trim();
-
-
-        const email =
-          document
-            .getElementById("email")
-            .value
-            .trim();
-
-
-        const messageText =
-          document
-            .getElementById("messageText")
-            .value
-            .trim();
-
-
-        /* Disable button */
-
-        button.disabled = true;
-
-        button.innerText =
-          "Submitting...";
-
-
-        message.innerText = "";
-
-
-        /* Create temporary form */
-
-        const submitForm =
+        const googleForm =
           document.createElement("form");
 
+        googleForm.method = "POST";
+        googleForm.action = GOOGLE_FORM_URL;
+        googleForm.target = "hidden_iframe";
+        googleForm.style.display = "none";
 
-        submitForm.method =
-          "POST";
 
+        function addField(name, value) {
 
-        submitForm.action =
-          GOOGLE_FORM_URL;
+          const input =
+            document.createElement("input");
 
+          input.type = "hidden";
+          input.name = name;
+          input.value = value || "";
 
-        submitForm.target =
-          "hidden_iframe";
-
-
-        submitForm.style.display =
-          "none";
-
-
-        /* Google Forms field mapping */
-
-        const fields = {
-
-          "entry.1713920276":
-            salonName,
-
-          "entry.951870254":
-            storeSize,
-
-          "entry.30164564":
-            location,
-
-          "entry.1454874061":
-            contactPerson,
-
-          "entry.1900115347":
-            phone,
-
-          "entry.1396736597":
-            whatsapp,
-
-          "entry.1037038169":
-            email,
-
-          "entry.1989603950":
-            messageText
-
-        };
-
-
-        /* Create hidden inputs */
-
-        Object.keys(fields).forEach(
-          function(name) {
-
-            const input =
-              document.createElement("input");
-
-
-            input.type =
-              "hidden";
-
-
-            input.name =
-              name;
-
-
-            input.value =
-              fields[name];
-
-
-            submitForm.appendChild(
-              input
-            );
-
-          }
-        );
-
-
-        /* Submit */
-
-        document.body.appendChild(
-          submitForm
-        );
-
-
-        submitForm.submit();
-
-
-        /* Show success */
-
-        setTimeout(
-          function() {
-
-            successModal.classList.add(
-              "show"
-            );
-
-
-            form.reset();
-
-
-            submitForm.remove();
-
-
-            button.disabled =
-              false;
-
-
-            button.innerText =
-              "Submit Information";
-
-
-          },
-          1000
-        );
-
-
-      }
-    );
-
-
-    /* ==========================================
-       CLOSE MODAL
-       ========================================== */
-
-    closeModal.addEventListener(
-      "click",
-      function() {
-
-        successModal.classList.remove(
-          "show"
-        );
-
-      }
-    );
-
-
-    /* Close when clicking background */
-
-    successModal.addEventListener(
-      "click",
-      function(event) {
-
-        if (
-          event.target === successModal
-        ) {
-
-          successModal.classList.remove(
-            "show"
-          );
-
+          googleForm.appendChild(input);
         }
 
-      }
-    );
+
+        /*
+         * Google Form Field Mapping
+         */
+
+        addField(
+          "entry.1713920276",
+          document.getElementById("salonName").value
+        );
+
+        addField(
+          "entry.951870254",
+          document.getElementById("storeSize").value
+        );
+
+        addField(
+          "entry.30164564",
+          document.getElementById("location").value
+        );
+
+        addField(
+          "entry.1454874061",
+          document.getElementById("contactPerson").value
+        );
+
+        addField(
+          "entry.1900115347",
+          document.getElementById("phone").value
+        );
+
+        addField(
+          "entry.1396736597",
+          document.getElementById("whatsapp").value
+        );
+
+        addField(
+          "entry.1037038169",
+          document.getElementById("email").value
+        );
+
+        addField(
+          "entry.1989603950",
+          document.getElementById("message").value
+        );
 
 
-    /* Close with ESC */
+        document.body.appendChild(googleForm);
 
-    document.addEventListener(
-      "keydown",
-      function(event) {
+        googleForm.submit();
 
-        if (
-          event.key === "Escape"
-        ) {
 
-          successModal.classList.remove(
-            "show"
-          );
+        /*
+         * Show success message
+         */
 
-        }
+        setTimeout(function() {
 
-      }
-    );
+          document.getElementById(
+            "successModal"
+          ).style.display = "flex";
 
+          form.reset();
+
+          submitBtn.disabled = false;
+          submitBtn.textContent =
+            "Submit Information";
+
+          googleForm.remove();
+
+        }, 1000);
+
+      });
+
+
+    function closeModal() {
+
+      document.getElementById(
+        "successModal"
+      ).style.display = "none";
+
+    }
 
   </script>
 
 </body>
-
 </html>
